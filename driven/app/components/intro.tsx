@@ -14,7 +14,7 @@ const Intro = () => {
           <div className='flex flex-col lg:flex-row items-start lg:items-end'>
             
         
-            <div className="relative w-[80px] h-[80px] lg:w-[200px] lg:h-[200px] shrink-0 mt-2 lg:mt-0">
+            <div className="relative w-[110px] h-[110px] lg:w-[200px] lg:h-[200px] shrink-0 mt-2 lg:mt-0">
                 <Image
                 src='/icons/UX_UX.svg'
                 alt='ui/ux'
@@ -34,7 +34,7 @@ const Intro = () => {
 
        
         <div className='mt-2 lg:mt-[40px] group self-end lg:self-auto'>
-          <div className='w-[8.5rem] h-[8.5rem] lg:w-[15rem] lg:h-[15rem] border-4 lg:border-7 border-violet-500 rounded-full flex items-center justify-center p-2 transition-transform hover:scale-105'>
+          <div className='w-[8.5rem] h-[8.5rem] ml-[4px] lg:w-[15rem] lg:h-[15rem] border-4 lg:border-7 border-violet-500 rounded-full flex items-center justify-center p-2 transition-transform hover:scale-105'>
             <Image
               src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/651a9c6343b362da1594b2b8_Vector.svg"
               alt="Get-in-touch"
