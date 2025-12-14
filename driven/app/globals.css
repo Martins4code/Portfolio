@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@plugin "tailwindcss-motion";
+
+
+:root {
+  --background: #e8e8e8;
+  --foreground: #171717;
+  --container-ml: 0; /* default — used by .responsive-ml below */
+}
+
+@font-face {
+  font-family: 'Satoshi-Regular';
+  src: url('/fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('/fonts/Satoshi-Regular.woff') format('woff'),
+       url('/fonts/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+body {
+  background-color: #e8e8e8;
+  font-family: 'Satoshi-Regular', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+
+/* Responsive breakpoints:
+   - small: 0 — 639px
+   - medium: 640 — 1023px
+   - large: 1024px and up
+*/
+@media (max-width: 639px) {
+  /* small screens */
+  :root { --container-ml: 0; }
+  .responsive-ml { margin-left: var(--container-ml); }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* medium screens */
+  :root { --container-ml: 0; }
+  .responsive-ml { margin-left: var(--container-ml); }
+}
+
+@media (min-width: 1024px) {
+  /* large screens */
+  :root { --container-ml: 160px; }
+  .responsive-ml { margin-left: var(--container-ml); }
+}
+
+
+.box_format {
+  background-color: #a78bfa;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: white;
+}
+
+
+.banner-paragraph {
+    max-width: 593px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 1.2em !important;
+}
