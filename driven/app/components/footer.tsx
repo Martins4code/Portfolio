@@ -4,9 +4,12 @@ import React, { useRef, useState } from 'react'
 
 const Footer = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
+  
+  // FIXED: Added <HTMLDivElement> so TypeScript knows what element this ref holds
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e) => {
+  // FIXED: Added type : React.MouseEvent<HTMLDivElement>
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
