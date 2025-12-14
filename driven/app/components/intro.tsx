@@ -38,15 +38,15 @@ const intro = () => {
  
   <div className="order-1 flex items-end gap-4 flex-nowrap w-full md:w-auto">
     <div className="w-[250px] h-[350px] flex-shrink-0">
-      <Image
-        src="/images/profile-pic.webp"
-        alt="banner-image"
-        width={250}
-        height={350}
-        className="w-full h-full object-cover rounded-xl border-2 border-gray-300"
-      />
-    </div>
-
+  <Image
+    src="/images/profile-pic.webp"
+    alt="banner-image"
+    // CHANGE THIS: Double the values to support 2x pixel density
+    width={500} 
+    height={700}
+    className="w-full h-full object-cover rounded-xl border-2 border-gray-300"
+  />
+</div>
     <div className="flex-1">
       <p className="banner-paragraph">
         PASSIONATE ABOUT WEB <br />
