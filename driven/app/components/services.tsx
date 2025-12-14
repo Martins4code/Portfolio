@@ -75,7 +75,7 @@ const services = () => {
               <div>2023</div>
             </div>
 
-            <p className='text-[20px] columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization specific needs.</p>
+            <p className='text-[20px] lg:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization specific needs.</p>
           </div>
 
           <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full'>View More</a>
