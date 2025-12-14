@@ -6,14 +6,14 @@ const intro = () => {
 
         <div className=" flex justify-between items-end">
             <div> 
-                <p className='text-[40px] text-bold lg:text-[80px] text-bold m-0'>CREATIVE</p>
+                <p className='text-[30px] text-bold lg:text-[80px] text-bold m-0'>CREATIVE</p>
                 <div className='flex'>
                     <Image
                     src='/icons/UX_UX.svg'
                     alt='ui/ux'
                       width={200} 
                       height={200}/>
-                <p className=' text-[40px] text-bold lg:text-[80px] pt-[20px] pl-[20px]'>DESIGNER</p>
+                <p className=' text-[30px] text-bold lg:text-[80px] pt-[20px] pl-[20px]'>DESIGNER</p>
                 </div>
         </div>
         
