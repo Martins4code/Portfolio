@@ -5,6 +5,7 @@ import Services from './components/services'
 import Timeline from './components/timeline'
 import Awards from './components/awards'
 import Footer from './components/footer'
+import Projects from './components/projects'
 
 const page = () => {
   return (
@@ -14,6 +15,7 @@ const page = () => {
       <Timeline/>
       <Services />
       <Awards />
+      <Projects />
       <Footer />
 
     </div>
