@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const services = () => {
   return (
@@ -7,7 +10,13 @@ const services = () => {
       
       <div className='grid grid-cols-1 px-[15px] gap-8 lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:items-stretch '>
 
-        <div className=' flex flex-col gap-[50px] items-center '>
+        <motion.div 
+          className=' flex flex-col gap-[50px] items-center '
+          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
+          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
             <div className='text-[20px] uppercase'>
               WHAT WE DO
             </div>
@@ -18,10 +27,16 @@ const services = () => {
               </a>
             </div>
             
-        </div>
+        </motion.div>
 
         
-        <div className='box_format flex flex-col justify-between h-full '>
+        <motion.div 
+          className='box_format flex flex-col justify-between h-full '
+          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
+          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
 
           <div>
             <div className='text-[24px] font-bold mb-4 flex justify-between'>
@@ -34,10 +49,16 @@ const services = () => {
 
           <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full'>View More</a>
 
-        </div>
+        </motion.div>
 
 
-        <div className='box_format flex flex-col justify-between h-full'>
+        <motion.div 
+          className='box_format flex flex-col justify-between h-full'
+          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
+          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
 
           <div>
             <div className='text-[24px] font-bold mb-4 flex justify-between'>
@@ -50,9 +71,15 @@ const services = () => {
 
           <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full'>View More</a>
               
-        </div>
+        </motion.div>
 
-        <div className='box_format flex flex-col justify-between h-full'>
+        <motion.div 
+          className='box_format flex flex-col justify-between h-full'
+          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
+          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
 
           <div>
             <div className='text-[24px] font-bold mb-4 flex justify-between'>
@@ -65,9 +92,15 @@ const services = () => {
 
           <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full'>View More</a>
             
-        </div>
+        </motion.div>
 
-        <div className='bg-black lg:col-span-2 p-[30px] text-white rounded-xl w-full h-full flex flex-col justify-between'> 
+        <motion.div 
+          className='bg-black lg:col-span-2 p-[30px] text-white rounded-xl w-full h-full flex flex-col justify-between'
+          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
+          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+          viewport={{ once: true }}
+        > 
           
           <div>
             <div className='text-[24px] font-bold mb-4 flex justify-between'>
@@ -80,7 +113,7 @@ const services = () => {
 
           <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full'>View More</a>
 
-        </div>
+        </motion.div>
 
       </div>
         

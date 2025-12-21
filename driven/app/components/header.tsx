@@ -28,7 +28,7 @@ const Header = () => {
 
         <nav className="flex items-center gap-6 2xl:gap-8 shrink-0">
           <a href="#work" className="text-xl 2xl:text-2xl font-semibold hover:text-violet-600 transition-colors">Works</a>
-          <a href="#about" className="text-xl 2xl:text-2xl font-semibold hover:text-violet-600 transition-colors">About</a>
+          <a href="/about" className="text-xl 2xl:text-2xl font-semibold hover:text-violet-600 transition-colors">About</a>
           <a href="#contact" className="text-xl 2xl:text-2xl font-semibold px-1 hover:text-violet-600 transition-colors">Let us talk</a>
         </nav>
       </div>
@@ -78,7 +78,7 @@ const Header = () => {
           {/* Navigation Links */}
           <nav className="flex flex-col gap-6 mb-12">
             <a href="#work" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">Works</a>
-            <a href="#about" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">About</a>
+            <a href="/about" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">About</a>
             <a href="#contact" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">Let us talk</a>
           </nav>
 

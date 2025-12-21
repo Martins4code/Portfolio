@@ -44,23 +44,23 @@ export default function AutoTimeline() {
           return (
             <div 
               key={step.id} 
-              className="relative flex items-center pb-24 group transition-colors duration-500"
+              className="relative flex items-center pb-20 lg:pb-32 group transition-colors duration-500"
             >
               
               {/* Vertical Dashed Line (Hide on the last item) */}
               {!isLast && (
                 <div 
-                  className="absolute left-[3.25rem] top-16 bottom-0 w-px border-l-2 border-dashed border-[#A78BFA]" 
+                  className="absolute left-[2.5rem] lg:left-[5rem] top-16 bottom-0 w-px border-l-2 border-dashed border-[#A78BFA]" 
                   aria-hidden="true"
                 ></div>
               )}
 
               {/* Left Side: Circle */}
               <div className="relative z-10 flex-shrink-0">
-                <div className="h-26 w-26 flex items-center justify-center">
+                <div className="h-20 w-20 lg:h-40 lg:w-40 flex items-center justify-center">
                   <div 
                     className={`
-                      h-[6.5rem] w-[6.5rem] rounded-full flex items-center justify-center text-4xl font-medium 
+                      h-[5rem] w-[5rem] lg:h-[10rem] lg:w-[10rem] rounded-full flex items-center justify-center text-3xl lg:text-6xl font-medium 
                       transition-all duration-700 ease-in-out
                       ${isActive 
                         ? 'bg-[#6200EA] text-white shadow-lg scale-110' 
@@ -80,13 +80,13 @@ export default function AutoTimeline() {
                 <div 
                   className={`
                     h-[1px] bg-[#C4B5FD] transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
-                    ${isActive ? 'w-32' : 'w-12'}
+                    ${isActive ? 'w-24 lg:w-48' : 'w-9 lg:w-18'}
                   `}
                 ></div>
 
                 {/* Connector Dot */}
                 <div className={`
-                    w-3 h-3 rounded-full bg-[#A78BFA] ring-4 ring-[#A78BFA]/20 relative z-20 flex-shrink-0
+                    w-2.5 h-2.5 lg:w-4.5 lg:h-4.5 rounded-full bg-[#A78BFA] ring-4 ring-[#A78BFA]/20 relative z-20 flex-shrink-0
                     transition-transform duration-700
                     ${isActive ? 'scale-125' : 'scale-100'}
                 `}></div>
@@ -94,11 +94,11 @@ export default function AutoTimeline() {
                 {/* Text Content */}
                 <div 
                   className={`
-                    ml-6 transition-all duration-700
+                    ml-4 lg:ml-10 transition-all duration-700
                     ${isActive ? 'opacity-100 translate-x-0' : 'opacity-60 translate-x-0'}
                   `}
                 >
-                  <h3 className={`text-4xl font-medium leading-tight transition-colors duration-500 ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
+                  <h3 className={`text-3xl lg:text-6xl font-medium leading-tight transition-colors duration-500 ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
                     {step.text}
                   </h3>
                 </div>
