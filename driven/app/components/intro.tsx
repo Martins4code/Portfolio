@@ -5,7 +5,7 @@ const Intro = () => {
     <div className="container mx-auto px-4 py-8 lg:p-1 lg:pl-[160px] bg-gray-200 min-h-screen">
 
 
-      <div className="flex flex-col items-start lg:flex-row lg:justify-between lg:items-end">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end">
         
         <div className="w-[240px] h-[164px] lg:w-auto">
           <p className='text-[40px] font-bold lg:text-[80px] m-0 leading-tight'>CREATIVE</p>
@@ -58,13 +58,13 @@ const Intro = () => {
       <div className="profile-main flex flex-col lg:flex-row items-start lg:items-end gap-8 mt-10 lg:mt-20">
 
         <div className="order-1 flex flex-col md:flex-row items-start md:items-end gap-6 w-full lg:w-auto">
-          <div className="w-fullmd:w-[250px] h-[350px] relative shrink-0 pl-[50px]">
+          <div className="w-full md:w-[250px] h-[350px] relative shrink-0">
             <Image
               src="/images/profile-pic.webp"
               alt="banner-image"
               width={500}
               height={700}
-              className="w-[250px] h-full object-cover rounded-xl border-2 border-gray-300"
+              className="w-full h-full object-cover rounded-xl border-2 border-gray-300"
             />
           </div>
           <div className="flex-1">
