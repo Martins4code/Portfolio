@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Footer = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -39,7 +40,13 @@ const Footer = () => {
         }
       `}</style>
 
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-6 font-normal text-[19px] w-full text-center lg:text-left py-10 px-[6rem]'>
+      <motion.div 
+        className='grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-6 font-normal text-[19px] w-full text-center lg:text-left py-10 px-[6rem]'
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
 
         {/* --- 1. NAME --- */}
         <div className='lg:row-start-1 lg:col-start-1'>
@@ -100,7 +107,7 @@ const Footer = () => {
           </p>
         </div>
         
-      </div>
+      </motion.div>
     </>
   )
 }

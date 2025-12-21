@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 const projects = () => {
   return (
@@ -7,7 +10,13 @@ const projects = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-8 px-[15px]'>
             
             {/* Image 1 */}
-            <div className='overflow-hidden rounded-lg shadow-lg'>
+            <motion.div 
+                className='overflow-hidden rounded-lg shadow-lg'
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+            >
                 <Image 
                     src="/images/dash.jpg"
                     alt="dashboard"
@@ -15,10 +24,16 @@ const projects = () => {
                     height={500} 
                     className='w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700 ease-in-out'
                 />
-            </div>
+            </motion.div>
 
             {/* Image 2 */}
-            <div className='overflow-hidden rounded-lg shadow-lg'>
+            <motion.div 
+                className='overflow-hidden rounded-lg shadow-lg'
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+            >
                 <Image 
                     src="/images/btc.jpg"
                     alt="project1"
@@ -26,10 +41,16 @@ const projects = () => {
                     height={500} 
                     className='w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700 ease-in-out'
                 />    
-            </div>
+            </motion.div>
 
             {/* Image 3 */}
-            <div className='overflow-hidden rounded-lg shadow-lg'>
+            <motion.div 
+                className='overflow-hidden rounded-lg shadow-lg'
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+            >
                 <Image 
                     src="/images/cloud.jpg"
                     alt="project1"
@@ -37,10 +58,16 @@ const projects = () => {
                     height={500} 
                     className='w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700 ease-in-out'
                 />
-            </div>
+            </motion.div>
 
             {/* Image 4 */}
-            <div className='overflow-hidden rounded-lg shadow-lg'>
+            <motion.div 
+                className='overflow-hidden rounded-lg shadow-lg'
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+            >
                 <Image 
                     src="/images/btt.jpg"
                     alt="project1"
@@ -48,7 +75,7 @@ const projects = () => {
                     height={500} 
                     className='w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700 ease-in-out'
                 />
-            </div>
+            </motion.div>
 
         </div>
     </div>
