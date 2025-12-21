@@ -45,7 +45,7 @@ const Footer = () => {
         <div className='lg:row-start-1 lg:col-start-1'>
           <p className='pb-[3.2rem] font-black'>MARCEL APITTY</p>
           <div className='text-4xl font-variable font-bold leading-normal tracking-normal w-full lg:w-[630px]'>
-            I DON’T BUILD WEBSITES, I BUILD <span className="text-violet-600">WORLD-CLASS BRANDS</span> AND SUSTAINABLE BUSINESSES
+            I DON’T BUILD WEBSITES, I BUILD <span className="text-violet-500">WORLD-CLASS BRANDS</span> AND SUSTAINABLE BUSINESSES
           </div>
         </div>
 
@@ -87,9 +87,9 @@ const Footer = () => {
 
         {/* --- 3. LINKS --- */}
         <div className='flex gap-5 justify-center lg:justify-end lg:row-start-2 lg:col-start-2'>
-          <p className="cursor-pointer hover:text-violet-600 transition-colors duration-300">Work</p> 
-          <p className="cursor-pointer hover:text-violet-600 transition-colors duration-300">About</p> 
-          <p className="cursor-pointer hover:text-violet-600 transition-colors duration-300">Blog</p>
+          <p className="cursor-pointer hover:text-violet-500 transition-colors duration-300">Work</p> 
+          <p className="cursor-pointer hover:text-violet-500 transition-colors duration-300">About</p> 
+          <p className="cursor-pointer hover:text-violet-500 transition-colors duration-300">Blog</p>
         </div>
 
         {/* --- 4. COPYRIGHT --- */}

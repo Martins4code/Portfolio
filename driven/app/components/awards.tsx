@@ -1,8 +1,14 @@
 import React from 'react'
 
+const awards = [
+  { year: "2021", title: "Dribbble Animation Award" },
+  { year: "2022", title: "Awwwards Site of the day" },
+  { year: "2023", title: "Awwwards Interactive Site" },
+];
+
 const Awards = () => {
   return (
-    <div className='container mx-auto p-3 bg-gray-200'>
+    <div className='container p-3 lg:ml bg-gray-200'>
 
         {/* Wrapper: 
            1. flex flex-col: Stacks vertically (Text on top) for mobile.
@@ -20,25 +26,12 @@ const Awards = () => {
             
             {/* Awards List */}
             <div className='flex flex-col gap-[50px] w-full'>
-                
-                {/* Item 1 */}
-                <div className='flex flex-col items-center lg:items-start'>
-                    <div className='text-gray-600'>2025</div>
-                    <h2 className='text-[30px] text-[#6200EA] lg:text-[60px] leading-none'>Dribbble Animation Award</h2>
-                </div>
-
-                {/* Item 2 */}
-                <div className='flex flex-col items-center lg:items-start'>
-                    <div className='text-gray-600'>2025</div>
-                    <h2 className='text-[30px] text-[#6200EA] lg:text-[60px] leading-none'>Dribbble Animation Award</h2>
-                </div>
-
-                {/* Item 3 */}
-                <div className='flex flex-col items-center lg:items-start'>
-                    <div className='text-gray-600'>2025</div>
-                    <h2 className='text-[30px] text-[#6200EA] lg:text-[60px] leading-none'>Dribbble Animation Award</h2>
-                </div>
-
+                {awards.map((award, i) => (
+                    <div key={i} className='flex flex-col items-center lg:items-start'>
+                        <div className='text-gray-600'>{award.year}</div>
+                        <h2 className='text-[30px] text-[#6200EA] lg:text-[60px] leading-none'>{award.title}</h2>
+                    </div>
+                ))}
             </div>
         </div>
       

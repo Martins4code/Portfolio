@@ -12,7 +12,7 @@ const services = () => {
               WHAT WE DO
             </div>
             
-            <div className='w-auto h-auto border-2 border-violet-500 text-violet-500 rounded-full px-8 py-2'>
+            <div className='w-auto h-auto border-2 border-violet-600 text-violet-600 rounded-full px-8 py-2'>
               <a href="">
                 Services
               </a>
