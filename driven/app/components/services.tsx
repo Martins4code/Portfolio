@@ -86,7 +86,7 @@ const services = () => {
 
           <div className='relative z-10'>
             <div className='text-[24px] font-bold mb-4 flex justify-between'>
-              <a href=""> IT Consultancy</a>
+              <a href=""> IT Consultancy.</a>
               <div>2023</div>
             </div>
 
