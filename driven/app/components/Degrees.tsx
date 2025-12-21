@@ -13,7 +13,7 @@ const Degrees = () => {
   return (
     <div className='container p-3 lg:ml bg-gray-200'>
            {/* Degrees Section */}
-        <div className="bg-violet-500 text-white p-8 rounded-[1rem] ">
+        <div className="bg-violet-600 text-white p-8 rounded-[1rem] ">
           <h2 className="text-[20px] font-bold uppercase tracking-[0.3em] mb-12">My Degree</h2>
           <div className="flex flex-col lg:flex-col gap-12">
             {degrees.map((item, i) => (
