@@ -41,7 +41,7 @@ const Intro = () => {
               width={40}
               height={70}
               
-              className="w-12 h-auto lg:w-16 lg:h-16 motion-preset-oscillate motion-duration-1500 transform rotate-40"
+              className="w-12 h-auto lg:w-16 lg:h-16 animate-bounce duration-3000 transform rotate-40"
             />
           </div>
 
