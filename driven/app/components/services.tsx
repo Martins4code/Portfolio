@@ -33,7 +33,7 @@ const services = () => {
             start: "top 90%",
             once: true,
           },
-          x: 200,
+           x: 200,
           scale: 0,
           opacity: 0,
           duration: 1,
