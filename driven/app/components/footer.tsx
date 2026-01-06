@@ -31,7 +31,7 @@ const Footer = () => {
         gsap.to(breathingRef.current, {
             scale: 1.1,
             duration: 2,
-            ease: "sine.inOut",
+            ease: "bounce.inOut",
             repeat: -1,
             yoyo: true
         });
@@ -84,12 +84,11 @@ const Footer = () => {
   return (
     <div 
       ref={footerRef}
-      className='relative w-full pb-[50px] bg-transparent'
-    >
+      className='text-left static bg-[#0000] pb-[50px]'>
       <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
 
           {/* Top Section */}
-          <div className='flex flex-col gap-[50px] justify-center items-center mb-[50px] w-full'>
+          <div className='flex flex-col gap-y-[50px] gap-x-[30px] justify-center items-center mb-[50px] w-full'>
               <div className='flex flex-col justify-between items-start w-full'>
                   <div className='flex flex-col gap-x-[50px] gap-y-[30px] items-center w-full'>
                       <a href='#' className='relative inline-block'>
@@ -105,7 +104,7 @@ const Footer = () => {
               <div 
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className='w-[200px] h-[200px] border border-dashed border-black rounded-full flex items-center justify-center relative cursor-pointer'
+                className='w-[200px] h-[200px] border border-dashed border-black rounded-full flex items-center justify-center relative cursor-pointer md:w-[255px] md:h-[255px]'
               >
                   {/* The Link (Magnetic Target) */}
                   <a 
@@ -116,7 +115,7 @@ const Footer = () => {
                       {/* The Visual Circle (Breathing Target) */}
                       <div 
                         ref={breathingRef}
-                        className="w-[180px] h-[180px] bg-[#111111] rounded-full flex items-center justify-center text-white"
+                        className="w-[180px] h-[180px] bg-[#111111] rounded-full flex items-center justify-center text-white md:w-[238px] md:h-[238px]"
                       >
                         <span className="pointer-events-none font-medium text-lg">Let’s Talk</span>
                       </div>

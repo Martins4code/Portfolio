@@ -48,7 +48,7 @@ const Awards = () => {
                               viewport={{ once: true }}
                             >
                                 <div>{award.year}</div>
-                                <h2 className='text-[30px] text-[#7000ff] my-2.5 font-medium tracking-[-1.6px] leading-[1em]'>{award.title}</h2>
+                                <h2 className='text-[30px] text-[#7000ff] my-2.5 font-medium tracking-[-1.6px] leading-[1em] md:text-[42px]'>{award.title}</h2>
                             </motion.div>
                         ))}
 

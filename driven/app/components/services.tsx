@@ -8,13 +8,15 @@ const ServiceCard = ({
   baseColor = "bg-[#7000ff]", 
   overlayColor = "bg-black", 
   isActive, 
-  onClick 
+  onClick,
+  index = 0
 }: { 
   children: React.ReactNode, 
   baseColor?: string, 
   overlayColor?: string, 
   isActive: boolean, 
-  onClick: () => void 
+  onClick: () => void,
+  index?: number
 }) => {
   return (
     <motion.div 
@@ -23,7 +25,7 @@ const ServiceCard = ({
       initial={{ x: 200, scale: 0.8, opacity: 0 }} // Starting state (Offscreen right, small, invisible)
       whileInView={{ x: 0, scale: 1, opacity: 1 }} // End state (Normal)
       viewport={{ once: true, margin: "-10%" }} // Triggers when element is 10% into view (similar to top 90%)
-      transition={{ duration: 0.8, ease: "easeOut" }} // Smooth easing
+      transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.1 }} // Smooth easing
       // --------------------------------
       className={`service-card cursor-pointer flex flex-col w-full ${baseColor} rounded-[15px] justify-between items-start p-[30px] relative overflow-hidden`}
     >
@@ -31,7 +33,7 @@ const ServiceCard = ({
       <motion.div 
         initial={false}
         animate={{ height: isActive ? "100%" : "0%" }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className={`${overlayColor} w-full absolute inset-x-0 bottom-0 top-auto z-0`}
       />
       
@@ -67,10 +69,10 @@ const Services = () => {
 
               {/* --- CARDS COLUMN --- */}
               <div className='col-span-1 row-span-1 w-full'>
-                <div className='flex flex-col gap-[30px]'>
+                <div className='flex flex-col gap-[30px] md:flex-row'>
                   
                   {/* --- CARD 1 --- */}
-                  <ServiceCard isActive={activeIndex === 0} onClick={() => handleCardClick(0)}>
+                  <ServiceCard index={0} isActive={activeIndex === 0} onClick={() => handleCardClick(0)}>
                       <div className='w-full relative'>
                         <Image src="icons/globank.svg" 
                               alt="globank" 
@@ -89,7 +91,7 @@ const Services = () => {
                   </ServiceCard> 
 
                   {/* --- CARD 2 --- */}
-                  <ServiceCard isActive={activeIndex === 1} onClick={() => handleCardClick(1)}>
+                  <ServiceCard index={1} isActive={activeIndex === 1} onClick={() => handleCardClick(1)}>
                       <div className='w-full relative'>
                         <Image src="icons/nextlogo.svg" 
                               alt="nextlogo" 
@@ -116,7 +118,7 @@ const Services = () => {
               <div className='col-span-1 row-span-1 w-full'>
                      <div className='flex flex-col gap-[30px]'>
                   
-                  <ServiceCard isActive={activeIndex === 2} onClick={() => handleCardClick(2)}>
+                  <ServiceCard index={2} isActive={activeIndex === 2} onClick={() => handleCardClick(2)}>
                       <div className='w-full relative'>
                         <Image src="icons/nextthird.svg" 
                               alt="nextthird" 
@@ -140,7 +142,7 @@ const Services = () => {
               {/* --- CARD 4 SECTION --- */}
               <div className='col-span-1 row-span-1 w-full'>
                   <div className='flex flex-col gap-[30px]'>
-                        <ServiceCard baseColor="bg-black" overlayColor="bg-[#7000ff]" isActive={activeIndex === 3} onClick={() => handleCardClick(3)}>
+                        <ServiceCard index={3} baseColor="bg-[#111111]" overlayColor="bg-[#7000ff]" isActive={activeIndex === 3} onClick={() => handleCardClick(3)}>
                               <div className='w-full relative'>
                                   <Image src="icons/bolt.svg" 
                                           alt="bolt" 
@@ -152,7 +154,7 @@ const Services = () => {
                                         <div>Present</div>
                                   </div>
                                   <div className='flex gap-[30px]'>
-                                        <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] lg:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization&apos;s specific needs.</p>
+                                        <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] md:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization&apos;s specific needs.</p>
                                   </div>
                               </div>
                               <a href="" className='border-[#ffffff] text-[#ffffff] relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px] '>View More</a>

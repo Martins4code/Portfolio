@@ -16,10 +16,10 @@ const Projects = () => {
   };
 
   return (
-    <div className='container py-[60px] z-5 bg-[#e8e8e8] relative block'>
+    <div className='container py-[60px] z-5 bg-[#e8e8e8] relative block md:py-[80px]'>
         <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
             <div className='w-full'>
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-[30px] grid-rows-[auto] auto-cols-fr w-full'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-[30px] grid-rows-[auto] auto-cols-fr w-full'>
                     
                     {/* --- Image 1 --- */}
                     <motion.div 
@@ -91,8 +91,8 @@ const Projects = () => {
                     >
                         <a href="#" className='group h-[400px] rounded-[15px] w-full block relative overflow-hidden max-w-full text-[#7000ff] no-underline bg-black'>
                              <Image
-                                src="/images/cloud.jpg"
-                                alt="cloud project"
+                                src="/images/btt.jpg"
+                                alt="btt project"
                                 width={570}
                                 height={500}
                                 className='w-full h-full max-w-full inline-block align-middle border-0 object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100'
@@ -121,8 +121,8 @@ const Projects = () => {
                     >
                         <a href="#" className='group h-[400px] rounded-[15px] w-full block relative overflow-hidden max-w-full text-[#7000ff] no-underline bg-black'>
                              <Image
-                                src="/images/btt.jpg"
-                                alt="btt project"
+                                src="/images/cloud.jpg"
+                                alt="cloud project"
                                 width={570}
                                 height={500}
                                 className='w-full h-full max-w-full inline-block align-middle border-0 object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100'
