@@ -1,128 +1,165 @@
 "use client";
+import React, { useState, useRef, useLayoutEffect } from 'react'
+import Image from 'next/image'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import React from 'react'
-import { motion } from 'framer-motion'
+gsap.registerPlugin(ScrollTrigger);
+
+const ServiceCard = ({ children, baseColor = "bg-[#7000ff]", overlayColor = "bg-black", isActive, onClick }: { children: React.ReactNode, baseColor?: string, overlayColor?: string, isActive: boolean, onClick: () => void }) => {
+  return (
+    <div onClick={onClick} className={`service-card cursor-pointer flex flex-col opacity-100 w-full ${baseColor} rounded-[15px] justify-between items-start p-[30px] relative overflow-hidden`}>
+      <div className={`${overlayColor} w-auto absolute inset-x-0 bottom-0 top-auto transition-all duration-700 ease-in-out ${isActive ? 'h-full' : 'h-0'}`}></div>
+      {children}
+    </div>
+  );
+};
 
 const services = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleCardClick = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".service-card");
+      cards.forEach((card: any) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            once: true,
+          },
+          x: 200,
+          scale: 0,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className='container p-3 lg:ml bg-gray-200'>
-
-      
-      <div className='grid grid-cols-1 px-[15px] gap-8 lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:items-stretch '>
-
-        <motion.div 
-          className=' flex flex-col gap-[50px] items-center '
-          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
-          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-            <div className='text-[20px] uppercase'>
-              WHAT WE DO
-            </div>
-            
-            <div className='w-auto h-auto border-2 border-violet-600 text-violet-600 rounded-full px-8 py-2'>
-              <a href="">
-                Services
-              </a>
-            </div>
-            
-        </motion.div>
-
-        
-        <motion.div 
-          className='box_format flex flex-col justify-between h-full relative overflow-hidden group'
-          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
-          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className='absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out'></div>
-
-          <div className='relative z-10'>
-            <div className='text-[24px] font-bold mb-4 flex justify-between'>
-              <a href=""> Cyber Security</a>
-              <div>2025</div>
-            </div>
-            
-            <p className='text-[20px]'>Our comprehensive Cyber Security Services ensure the protection and resilience of your digital assets and operations. We employ cutting-edge technologies and expert strategies to safeguard your organization against evolving cyber threats.</p>
-          </div>
-
-          <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full relative z-10'>View More</a>
-
-        </motion.div>
-
-
-        <motion.div 
-          className='box_format flex flex-col justify-between h-full relative overflow-hidden group'
-          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
-          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className='absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out'></div>
-
-          <div className='relative z-10'>
-            <div className='text-[24px] font-bold mb-4 flex justify-between'>
-              <a href=""> App Development</a>
-              <div>2023</div>
-            </div>
-
-            <p className='text-[20px]'>Our App Development Services encompass the entire spectrum of building innovative and functional applications tailored to meet your unique business needs.</p>
-          </div>
-
-          <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full relative z-10'>View More</a>
+    <div ref={containerRef} className='container pb-0 pt-[60px] z-5 bg-[#e8e8e8] relative'>
+        <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
+            <div className='grid grid-cols-1 gap-[30px] auto-cols-fr w-full '>
               
-        </motion.div>
+              {/* --- HEADER SECTION --- */}
+              <div className='flex flex-col w-full col-span-1 row-span-1 opacity-100 gap-[30px] items-center mb-[30px] gap-y-[50px]'>
+                <div className='uppercase max-w-[850px] my-0 text-[20px] font-medium'>
+                  What We Do
+                </div>
+                <a href="" className='border-solid border-2 text-[#7000ff] text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em]  transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
+                  Services
+                  </a>
+              </div>
 
-        <motion.div 
-          className='box_format flex flex-col justify-between h-full relative overflow-hidden group'
-          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
-          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className='absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out'></div>
+              {/* --- CARDS COLUMN --- */}
+              <div className='col-span-1 row-span-1 w-full'>
+                <div className='flex flex-col gap-[30px]'>
+                  
+                  {/* --- CARD 1 --- */}
+                  <ServiceCard isActive={activeIndex === 0} onClick={() => handleCardClick(0)}>
+                      <div className='z-1 w-full relative'>
+                        <Image src="icons/globank.svg" 
+                              alt="down" 
+                              width={168} 
+                              height={41} 
+                              className='max-w-full inline-block align-middle border-0'/>
+                          <div className='flex flex-col items-start gap-[15px] text-white border-b justify-between w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
+                              <a href="" className='text-white text-[25px] items-center leading-[1.2em] no-underline transition-colors duration-300 bg-[#0000]'>Cyber Security</a>
+                              <div>2023</div>
+                          </div>
+                          <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>Our comprehensive Cyber Security Services ensure the protection and resilience of your digital assets and operations. We employ cutting-edge technologies and expert strategies to safeguard your organization against evolving cyber threats.</p>
+                      </div>
+                      <a href="" className='z-2 border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em]  transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
+                        View more
+                      </a>
+                  </ServiceCard> 
+                  {/* Correct closing for Card 1 */}
 
-          <div className='relative z-10'>
-            <div className='text-[24px] font-bold mb-4 flex justify-between'>
-              <a href=""> IT Consultancy.</a>
-              <div>2023</div>
+                {/* --- CARD 1 --- */}
+                  <ServiceCard isActive={activeIndex === 1} onClick={() => handleCardClick(1)}>
+                      <div className='z-1 w-full relative'>
+                        <Image src="icons/nextlogo.svg" 
+                              alt="down" 
+                              width={142} 
+                              height={41} 
+                              className='max-w-full inline-block align-middle border-0'/>
+                          <div className='flex flex-col items-start gap-[15px] text-white border-b justify-between w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
+                              <a href="" className='text-white text-[25px] items-center leading-[1.2em] no-underline transition-colors duration-300 bg-[#0000]'>Cyber Security</a>
+                              <div>2023</div>
+                          </div>
+                          <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>
+Logo Services
+App Development
+2023
+Our App Development Services encompass the entire spectrum of building innovative and functional applications tailored to meet your unique business needs.</p>
+                      </div>
+                      <a href="" className='z-2 border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em]  transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
+                        View more
+                      </a>
+                  </ServiceCard> 
+                  {/* Correct closing for Card 1 */}
+
+                </div>
+              </div>
+
+              {/* Empty Grid Cells (If needed) */}
+              <div className='col-span-1 row-span-1 w-full'>
+                     <div className='flex flex-col gap-[30px]'>
+                  
+                  {/* --- CARD 3 --- */}
+                  <ServiceCard isActive={activeIndex === 2} onClick={() => handleCardClick(2)}>
+                      <div className='z-1 w-full relative'>
+                        <Image src="icons/nextthird.svg" 
+                              alt="down" 
+                              width={156} 
+                              height={41} 
+                              className='max-w-full inline-block align-middle border-0'/>
+                          <div className='flex flex-col items-start gap-[15px] text-white border-b justify-between w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
+                              <a href="" className='text-white text-[25px] items-center leading-[1.2em] no-underline transition-colors duration-300 bg-[#0000]'>IT Consultancy</a>
+                              <div>2023</div>
+                          </div>
+                          <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>Our IT Consultancy Services are designed to guide and empower your organization in navigating the complex and ever-changing landscape of information technology.</p>
+                      </div>
+                      <a href="" className='z-2 border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em]  transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
+                        View more
+                      </a>
+                  </ServiceCard> 
+                  {/* Correct closing for Card 3 */}
+                </div>
+              </div>
+              <div className='col-span-1 row-span-1 w-full'>
+                  <div className='flex flex-col gap-[30px]'>
+                        <ServiceCard baseColor="bg-black" overlayColor="bg-[#7000ff]" isActive={activeIndex === 3} onClick={() => handleCardClick(3)}>
+                              <div className='z-1 w-full relative'>
+                                  <Image src="icons/bolt.svg" 
+                                          alt="down" 
+                                          width={145} 
+                                          height={41} 
+                                          className='max-w-full inline-block border-0 align-middle ' />
+                                  <div className='flex flex-col items-start gap-[15px] text-white border-b border-solid border-#fff6 justify-between w-full my-5 pb-5 text-[25px] '>
+                                        <a href="" className='text-white text-25 items-center leading-[1.2em] no-underline transition-colors duration-300 bg-[#0000]'>Cloud Migration</a>
+                                        <div>Present</div>
+                                  </div>
+                                  <div className='flex gap-[30px]'>
+                                        <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] lg:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization's specific needs.</p>
+                                  </div>
+                              </div>
+                              <a href="" className='z-2 border-[#ffffff] text-[#ffffff] relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px] '>View More</a>
+                        </ServiceCard>
+                  </div>
+              </div>
             </div>
-
-            <p className='text-[20px]'>Our IT Consultancy Services are designed to guide and empower your organization in navigating the complex and ever-changing landscape of information technology.</p>
-          </div>
-
-          <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full relative z-10'>View More</a>
-            
-        </motion.div>
-
-        <motion.div 
-          className='bg-black lg:col-span-2 p-[30px] text-white rounded-xl w-full h-full flex flex-col justify-between relative overflow-hidden group'
-          initial={{ opacity: 0, scale: 0, rotateY: 90, originX: 1 }}
-          whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className='absolute inset-0 bg-violet-600 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out'></div> 
-          
-          <div className='relative z-10'>
-            <div className='text-[24px] font-bold mb-4 flex justify-between'>
-              <a href=""> Cloud Migration</a>
-              <div>2023</div>
-            </div>
-
-            <p className='text-[20px] lg:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization specific needs.</p>
-          </div>
-
-          <a href="" className='mt-4 self-start pl-5 pr-5 border-2 border-white text-white rounded-full relative z-10'>View More</a>
-
-        </motion.div>
-
-      </div>
-        
+        </div>
     </div>
   )
 }
 
-export default services 
+export default services

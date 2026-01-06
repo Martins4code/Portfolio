@@ -1,116 +1,96 @@
+'use client'
 import Image from 'next/image'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const Intro = () => {
+  const arrowImageRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (arrowImageRef.current) {
+      gsap.to(arrowImageRef.current, {
+        y: 5,
+        x: -5,
+        duration: 0.4,
+        ease: "power1.inOut",
+        yoyo: true,
+        repeat: -1
+      })
+    }
+  })
+
   return (
-    <div className='container p-9 lg:ml bg-gray-200'>
-
-
-      <div className="flex flex-row lg:flex-row lg:justify-between lg:items-end">
-        
-        <div className="w-full lg:w-auto">
-          <h1 className='text-[40px] lg:text-[80px] m-0 leading-tight'>CREATIVE</h1>
-          
-         
-          <div className='flex flex-col lg:flex-row items-start lg:items-end'>
-            
-        
-            <div className="relative w-[110px] h-[110px] lg:w-[227px] lg:h-[70px] shrink-0 mt-2 lg:mt-0">
-                <Image
-                src='/icons/UX_UX.svg'
-                alt='ui/ux'
-                fill
-                className="object-contain"
-                />
+    <div className='flex flex-col pt-10 min-h-auto z-2 bg-[#e8e8e8]'>
+      <div className='flex items-center relative w-full h-full top-0 '>
+        <a href="" className="flex flex-col justify-center mr-[15px] mt-10 absolute top-0 right-0 border-4 border-solid border-[#7000ff] rounded-full w-[100px] h-[100px]">
+          <div className='w-[100px] h-[100px] p-0.5 flex relative'>
+            <div className='w-[100px] h-[100px] rounded-full flex justify-center items-center flex-none'>
+              <div ref={arrowImageRef} className="absolute">
+                <Image src="icons/arrow.svg" 
+                  alt="down" 
+                  width={28} 
+                  height={40} 
+                  className='max-w-full transform rotate-45 scale-100' />
+              </div>
             </div>
-            
-            
-            <h1 className='text-[40px]  lg:text-[80px] pt-0 pl-0 lg:pt-[20px] lg:pl-[20px] leading-tight'>
+          </div>
+        </a>
+      </div>
+      <div className='flex flex-col px-[15px] relative items-center max-w-[1200px] mx-auto'>
+
+        <div className='w-[60%] flex items-start mr-[152.802px] flex-wrap'>
+            <h1 className='text-[40px] font-medium my-2.5 leading-[1em] tracking-[-2.2px]'>
+              CREATIVE<br/>
+              <span className='inline-block w-[163px] h-[50px] my-[15px] mr-[15px]'>
+                <Image
+                  src="icons/UX_UX.svg"
+                  alt="ui"
+                  width={297}
+                  height={93}
+                  className='inline-block bg-contain'
+                />
+              </span>
               DESIGNER
             </h1>
-          </div>
-
-          
         </div>
 
-       
-        <div className='mt-2 lg:mt-[40px] group self-end lg:self-auto'>
-          <div className='w-[6rem] h-[6rem] ml-[4px] lg:w-[13rem] lg:h-[13rem] border-4 lg:border-7 border-violet-600 rounded-full flex items-center justify-center p-2 transition-transform hover:scale-105'>
-            <Image
-              src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/651a9c6343b362da1594b2b8_Vector.svg"
-              alt="Get-in-touch"
-              width={40}
-              height={70}
-              
-              className="w-12 h-auto lg:w-16 lg:h-16 animate-bounce duration-3000 transform rotate-40"
-            />
-          </div>
+        <div className='flex flex-col gap-[50px] w-full mt-10'>
+            <div className='flex flex-col text-center items-center gap-[30px] gap-y-[25px]'>
+              <div className='w-[250px] h-[300px] rounded-[15px] flex-none overflow-hidden'>
+                <Image
+                  src="/images/profile-pic.webp"
+                  alt="someguy"
+                  width={640}
+                  height={320}
+                  className='inline-block align-middle w-full h-full max-w-full object-cover'
+                />
+              </div>
+              <p className='max-w-[593px] my-0 text-[24px] font-medium leading-[1.2em]'>PASSIONATE ABOUT WEB TECHNOLOGIES. I LOVE WORKING AT THE INTERSECTION OF CREATIVITY AND USER FRIENDLY INTERFACES. I CREATE MEMORABLE WEB EXPERIENCES.</p>
+            </div>
 
+            <div className='flex flex-col flex-none gap-[30px] gap-y-[30px] text-center items-center w-full mr-0'>
+                <div className='flex flex-row gap-5'>
 
-          <div>
-            
-          </div>
-
-        </div>
-
-      </div>
-
-     
-      <div className="profile-main flex flex-col lg:flex-row items-start lg:items-end gap-8 mt-10 lg:mt-20">
-
-        <div className="order-1 flex flex-col md:flex-row items-start md:items-end gap-6 w-full lg:w-auto">
-          <div className="w-[70%] md:w-[250px] h-[350px] relative shrink-0 mx-auto">
-            <Image
-              src="/images/profile-pic.webp"
-              alt="banner-image"
-              width={500}
-              height={700}
-              className="w-full h-full object-cover rounded-xl border-2 border-gray-300"
-            />
-          </div>
-          <div className="flex-1">
-            <p className="font-bold text-xl lg:text-2xl leading-relaxed uppercase max-w-md text-center lg:text-left">
-              Passionate about web technologies. I love working at the intersection of creativity and user friendly interfaces. I create memorable web experiences.
-            </p>
-          </div>
-        </div>
-
-        <div className="order-2 w-full lg:w-auto flex flex-col lg:ml-auto space-y-6">
-          <div className="flex flex-row gap-4">
-            <a
-              href="https://instagram.com/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 border-2 border-violet-500 text-violet-500 rounded-full overflow-hidden w-[50px] hover:w-[140px] lg:hover:w-[150px] hover:bg-violet-500 hover:text-white transition-all duration-300 px-2 py-2"
-            >
-              <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">IG</span>
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Instagram</span>
-            </a>
-            <a
-              href="https://facebook.com/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 border-2 border-violet-500 text-violet-500 rounded-full overflow-hidden w-[50px] hover:w-[140px] lg:hover:w-[150px] hover:bg-violet-500 hover:text-white transition-all duration-300 px-2 py-2"
-            >
-              <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">FB</span>
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Facebook</span>
-            </a>
-            <a
-              href="https://twitter.com/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 border-2 border-violet-500 text-violet-500 rounded-full overflow-hidden w-[50px] hover:w-[140px] lg:hover:w-[150px] hover:bg-violet-500 hover:text-white transition-all duration-300 px-2 py-2"
-            >
-              <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">TW</span>
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Twitter</span>
-            </a>
-          </div>
-
-          <h3 className="block text-[40px] leading-[1.1] font-bold lg:text-[60px]">
-            Marcel <br />Apitty
-          </h3>
+                  <a href="https://www.instagram.com/" className='Socials'>
+                    <div className='initials'>in</div>
+                    <div className='hoverMode'>Instagram</div>
+                  </a>
+                  <a href="https://www.facebook.com/" className='Socials'>
+                    <div className='initials'>fb</div>
+                    <div className='hoverMode'>Facebook</div>
+                  </a>
+                  <a href="https://twitter.com/" className='Socials'>
+                    <div className='initials'>tw</div>
+                    <div className='hoverMode'>Twitter</div>
+                  </a>
+                </div>
+                <div className='tracking-[-2.2px] uppercase leading-[1em] text-[40px] '>Marcel Apitty</div>
+            </div>
         </div>
 
       </div>
+
     </div>
   )
 }

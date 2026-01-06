@@ -9,63 +9,103 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="w-full overflow-x-hidden relative">
-      {/* --- DESKTOP NAVIGATION --- */}
-      <div className="hidden xl:flex justify-between items-center px-6 py-5 whitespace-nowrap w-full">
-        <div className="flex items-center shrink-0">
-          {/* Name linked to Home */}
-          <a href="/" className="">
-            <h3 className="text-xl 2xl:text-2xl font-semibold">MARCEL APITTY</h3>
+    <header className="w-full relative">
+      {/* --- DESKTOP NAVIGATION --- 
+         FIX: Added 'lg:flex' to make it visible on large screens.
+         Added 'items-center' and 'justify-between' for layout.
+         Added 'px-6 py-4' for spacing.
+      */}
+      <div className="hidden lg:flex w-full items-center justify-between px-[15px] py-4">
+        
+        {/* Logo Section */}
+        <div className="">
+          <a href="/" className="hover:text-violet-600 transition-colors mt-5">
+            <Image
+              src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg"
+              width={167}
+              height={24}
+              alt="Marcel Apitty"
+              className="text-xl 2xl:text-2xl"
+            />
           </a>
         </div>
 
-        <div className="flex items-center gap-8 2xl:gap-16">
-          <p className="text-xl 2xl:text-2xl font-semibold">Warsaw, Poland</p>
-          <p className="font-semibold text-xl 2xl:text-2xl">
-            Currently UI/UX Designer at <span className="text-violet-600">Spike</span>
-          </p>
+        {/* Center Info Section (Job & Location) */}
+        <div className="flex items-center gap-[5rem]">
+          <div className="">
+            <p className="text-small py-4">
+              Currently UI/UX Designer at{" "}
+              <span className="text-violet-600">Spike</span>
+            </p>
+          </div>
         </div>
+            <div>
+            <p className="text-[20px]">Warsaw, Poland</p>
+          </div>
 
+        {/* Navigation Links */}
         <nav className="flex items-center gap-6 2xl:gap-8 shrink-0">
-          <a href="#work" className="text-xl 2xl:text-2xl font-semibold hover:text-violet-600 transition-colors">Works</a>
-          <a href="/about" className="text-xl 2xl:text-2xl font-semibold hover:text-violet-600 transition-colors">About</a>
-          <a href="#contact" className="text-xl 2xl:text-2xl font-semibold px-1 hover:text-violet-600 transition-colors">Let us talk</a>
+          <a href="#demos" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
+            Demos
+          </a>
+          <a href="#work" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
+            Works
+          </a>
+          <a href="/about" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
+            About
+          </a>
+          <a href="#contact" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
+            Let Us Talk
+          </a>
         </nav>
       </div>
 
-      {/* --- MOBILE NAVIGATION --- */}
-      <div className="flex xl:hidden justify-between items-center px-4 py-4 w-full">
-        {/* Name linked to Home */}
-        <a href="/" className="">
-          <p className="text-2xl font-semibold">MARCEL APITTY</p>
-        </a>
+      {/* --- MOBILE NAVIGATION --- 
+          Changed 'xl:hidden' to 'lg:hidden' 
+      */}
+      <div className="flex lg:hidden justify-between items-center w-full pt-5 px-[15px]">
 
-        <button onClick={toggleMenu} className="z-[60]">
+        <div className="menu-name flex justify-between w-full items-center">
+          <div>
+             <a href="/">
+          <Image src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg" width={167} height={24} alt="Marcel Apitty" className="w-[167] h-[24]" />
+        </a>
+          </div>
+         
+        <div>
+          <button onClick={toggleMenu} className="relative z-[60] ">
           <Image
             src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/6516d855f0fd3371a7761050_menu-btn.svg"
             alt="hamburger-menu"
-            height={40}
-            width={40}
+            height={16}
+            width={27}
           />
         </button>
+        </div>
+        
 
-        {/* --- SIDE MENU OVERLAY --- */}
-        {isOpen && (
-          <div 
-            className="fixed"
-            onClick={toggleMenu}
-          />
-        )}
+        </div>
+        
 
-        {/* --- SIDE MENU PANEL --- */}
-        <div className={`fixed top-0 left-0 h-screen w-[350px] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col pt-4 px-6 pb-6 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
-          
-          {/* Header inside Side Menu: Name (Linked) + Custom X Image */}
-          <div className="flex justify-between items-center mb-6">
-            <a href="/" onClick={toggleMenu} className="hover:text-violet-600 transition-colors duration-300">
-              <h3 className="text-xl font-bold">MARCEL APITTY</h3>
+        {/* --- MOBILE SIDE MENU PANEL --- */}
+        <div 
+          className={`fixed top-0 left-0 h-screen w-[320px] bg-[#FFFFFF] z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col pt-6 px-[15px] pb-6 ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div className="flex justify-between items-center mb-10">
+            <a href="/" onClick={toggleMenu}>
+              <a href="/" className="hover:text-violet-600 transition-colors">
+            <Image
+              src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg"
+              width={167}
+              height={24}
+              alt="Marcel Apitty"
+              className="text-xl 2xl:text-2xl"
+            />
+          </a>
             </a>
-            <button onClick={toggleMenu} className="hover:opacity-70 transition-opacity">
+            <button onClick={toggleMenu}>
               <Image 
                 src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/6516d855f0fd3371a7761051_close-btn.svg" 
                 alt="close-menu"
@@ -73,28 +113,18 @@ const Header = () => {
                 height={16}
               />
             </button>
-          </div>
-
-          {/* Navigation Links */}
-          <nav className="flex flex-col gap-6 mb-12">
-            <a href="#work" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">Works</a>
-            <a href="/about" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">About</a>
-            <a href="#contact" onClick={toggleMenu} className="text-xl font-semibold hover:text-violet-600">Let us talk</a>
-          </nav>
-
-          {/* Location and Role */}
-          <div className="flex flex-col gap-4">
-            <div>
-              <p className="text-lg font-semibold">Warsaw, Poland</p>
-            </div>
-            <div>
-              <p className="text-lg font-semibold">
-                Currently UI/UX Designer at <span className="text-violet-600">Spike</span>
-              </p>
             </div>
           </div>
           
-        </div>
+
+          
+
+        {isOpen && (
+          <div 
+            className="fixed inset-0 bg-black/40 z-[65]"
+            onClick={toggleMenu}
+          />
+        )}
       </div>
     </header>
   );

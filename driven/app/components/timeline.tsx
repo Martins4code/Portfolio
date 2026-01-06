@@ -1,113 +1,104 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
-export default function AutoTimeline() {
-  // Start with step 1 active
-  const [activeStep, setActiveStep] = useState(1);
 
-  // This effect handles the automatic cycling
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStep((currentStep) => {
-        // If we are at step 3, go back to 1, otherwise go to next
-        return currentStep === 3 ? 1 : currentStep + 1;
-      });
-    }, 2000); // <-- Change this number (2000ms = 2 seconds) to make it faster/slower
+const Timeline = () => {
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
+  const line3Ref = useRef(null);
+  const scale1Ref = useRef(null);
+  const scale2Ref = useRef(null);
+  const scale3Ref = useRef(null);
+  const num1Ref = useRef(null);
+  const num2Ref = useRef(null);
+  const num3Ref = useRef(null);
 
-    // Cleanup interval on component unmount
-    return () => clearInterval(interval);
-  }, []);
-
-  const steps = [
-    {
-      id: 1,
-      text: <>I’m a pixel <br /> perfectionist</>,
-    },
-    {
-      id: 2,
-      text: <>Working with 2D, <br /> 3D, 4D</>,
-    },
-    {
-      id: 3,
-      text: <>I love make <br /> things interactive</>,
-    },
-  ];
-
+  useGSAP(() => {
+    gsap.set([scale1Ref.current, scale2Ref.current, scale3Ref.current], { scale: 0 });
+    const tl = gsap.timeline({ repeat: -1 });
+    // For lg screens, you can modify the width values here, e.g., extend to 80px instead of 60px, and adjust scaleNow sizes accordingly
+    tl.to(line1Ref.current, { width: '60px', duration: 1, ease: 'power2.inOut' })
+      .to(scale1Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(num1Ref.current, { color: '#ffffff' }, '<')
+      .to(line1Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
+      .to(scale1Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(num1Ref.current, { color: '#7000ff' }, '<')
+      .to(line2Ref.current, { width: '60px', duration: 1, ease: 'power2.inOut' })
+      .to(scale2Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(num2Ref.current, { color: '#ffffff' }, '<')
+      .to(line2Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
+      .to(scale2Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(num2Ref.current, { color: '#7000ff' }, '<')
+      .to(line3Ref.current, { width: '60px', duration: 1, ease: 'power2.inOut' })
+      .to(scale3Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(num3Ref.current, { color: '#ffffff' }, '<')
+      .to(line3Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
+      .to(scale3Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
+      .to(num3Ref.current, { color: '#7000ff' }, '<');
+  });
   return (
-    <div className="bg-[#EBEBEB] min-h-screen flex items-center justify-center p-8 font-sans">
-      <div className="max-w-3xl w-full">
-        
-        {steps.map((step, index) => {
-          const isActive = activeStep === step.id;
-          const isLast = index === steps.length - 1;
+    <div className='pb-0 pt-[60px] bg-[#e8e8e8] relative z-index-5'>
+        <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
+           <div className='flex flex-col justify-center w-full'>
 
-          return (
-            <div 
-              key={step.id} 
-              className="relative flex items-center pb-20 lg:pb-32 group transition-colors duration-500"
-            >
-              
-              {/* Vertical Dashed Line (Hide on the last item) */}
-              {!isLast && (
-                <div 
-                  className="absolute left-[2.5rem] lg:left-[5rem] top-16 bottom-0 w-px border-l-2 border-dashed border-[#A78BFA]" 
-                  aria-hidden="true"
-                ></div>
-              )}
-
-              {/* Left Side: Circle */}
-              <div className="relative z-10 flex-shrink-0">
-                <div className="h-20 w-20 lg:h-40 lg:w-40 flex items-center justify-center">
-                  <div 
-                    className={`
-                      h-[5rem] w-[5rem] lg:h-[10rem] lg:w-[10rem] rounded-full flex items-center justify-center text-3xl lg:text-6xl font-medium 
-                      transition-all duration-700 ease-in-out
-                      ${isActive 
-                        ? 'bg-[#6200EA] text-white shadow-lg scale-110' 
-                        : 'bg-[#EBEBEB] text-[#6D28D9] border-[1.5px] border-[#6D28D9] shadow-sm scale-100'
-                      }
-                    `}
-                  >
-                    {step.id}
+              <div className='flex items-center w-full min-h-[100px]'>
+                <div className='flex w-[60px] h-[60px] text-[20px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden'>
+                  <div ref={scale1Ref} className='scaleNow w-[60px] h-[60px] bg-[#7000ff] rounded-full absolute text-[20px] z-index-0'></div>
+                  <div ref={num1Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px]'>1</div>
+                </div>
+                <div className='flex items-center '>
+                  <div ref={line1Ref} className='myLine flex w-[30px] h-px bg-[#7000ff] opacity-[0.4]'></div>
+                  <div className='flex bg-[#7000ff33] rounded-full justify-center items-center w-[30px] h-[30px]'>
+                      <div className='bg-[#7000ff] rounded-full w-2.5 h-2.5 absolute'></div>
                   </div>
                 </div>
-              </div>
-
-              {/* Right Side: Connector & Text */}
-              <div className="flex items-center w-full">
-                
-                {/* Horizontal Connector Line - ANIMATING WIDTH */}
-                <div 
-                  className={`
-                    h-[1px] bg-[#C4B5FD] transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
-                    ${isActive ? 'w-24 lg:w-48' : 'w-9 lg:w-18'}
-                  `}
-                ></div>
-
-                {/* Connector Dot */}
-                <div className={`
-                    w-2.5 h-2.5 lg:w-4.5 lg:h-4.5 rounded-full bg-[#A78BFA] ring-4 ring-[#A78BFA]/20 relative z-20 flex-shrink-0
-                    transition-transform duration-700
-                    ${isActive ? 'scale-125' : 'scale-100'}
-                `}></div>
-
-                {/* Text Content */}
-                <div 
-                  className={`
-                    ml-4 lg:ml-10 transition-all duration-700
-                    ${isActive ? 'opacity-100 translate-x-0' : 'opacity-60 translate-x-0'}
-                  `}
-                >
-                  <h3 className={`text-3xl lg:text-6xl font-medium leading-tight transition-colors duration-500 ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
-                    {step.text}
-                  </h3>
+                <div className='ml-5 max-w-[465px] text-[60px] leading-[1em]'>
+                  <h2 className='my-2.5 text-[30px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>I’m a pixel<span className="block sm:hidden"></span> perfectionist</h2>
                 </div>
               </div>
-            </div>
-          );
-        })}
 
-      </div>
+              <div className='h-[100px] ml-[25px] border border-dashed border-[#7000ff66] w-px'></div>
+
+              <div className='flex items-center w-full min-h-[100px]'>
+                <div className='flex w-[60px] h-[60px] text-[20px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden'>
+                  <div ref={scale2Ref} className='scaleNow w-[60px] h-[60px] bg-[#7000ff] rounded-full absolute text-[20px] z-index-0'></div>
+                  <div ref={num2Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px]'>2</div>
+                </div>
+                <div className='flex items-center '>
+                  <div ref={line2Ref} className='myLine flex w-[30px] h-px bg-[#7000ff] opacity-[0.4]'></div>
+                  <div className='flex bg-[#7000ff33] rounded-full justify-center items-center w-[30px] h-[30px]'>
+                        <div className='bg-[#7000ff] rounded-full w-2.5 h-2.5 absolute'></div>
+                  </div>
+                </div>
+                <div className='ml-5 max-w-[465px] text-[60px] leading-[1em]'>
+                  <h2 className='my-2.5 text-[30px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>Working with 2D,<span className="block sm:hidden"></span>3D, 4D</h2>
+                </div>
+              </div>
+
+              <div className='h-[100px] ml-[25px] border border-dashed border-[#7000ff66] w-px'></div>
+
+              <div className='flex items-center w-full min-h-[100px]'>
+                <div className='flex w-[60px] h-[60px] text-[20px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden'>
+                  <div ref={scale3Ref} className='scaleNow w-[60px] h-[60px] bg-[#7000ff] rounded-full absolute text-[20px] z-index-0'></div>
+                  <div ref={num3Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px]'>3</div>
+                </div>
+                <div className='flex items-center '>
+                  <div ref={line3Ref} className='myLine flex w-[30px] h-px bg-[#7000ff] opacity-[0.4]'></div>
+                  <div className='flex bg-[#7000ff33] rounded-full justify-center items-center w-[30px] h-[30px]'>
+                        <div className='bg-[#7000ff] rounded-full w-2.5 h-2.5 absolute'></div>
+                  </div>
+                </div>
+                <div className='ml-5 max-w-[465px] text-[60px] leading-[1em]'>
+                  <h2 className='my-2.5 text-[30px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>I love make things interactive</h2>
+                </div>
+              </div>
+
+           </div>
+        </div>
     </div>
-  );
+  )
 }
+
+export default Timeline
