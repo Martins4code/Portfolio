@@ -149,7 +149,7 @@ Our App Development Services encompass the entire spectrum of building innovativ
                                         <div>Present</div>
                                   </div>
                                   <div className='flex gap-[30px]'>
-                                        <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] lg:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization's specific needs.</p>
+                                        <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] lg:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization&apos;s specific needs.</p>
                                   </div>
                               </div>
                               <a href="" className='z-2 border-[#ffffff] text-[#ffffff] relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px] '>View More</a>
