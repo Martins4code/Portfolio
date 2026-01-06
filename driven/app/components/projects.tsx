@@ -1,49 +1,34 @@
 'use client'
 
-import React, { useLayoutEffect, useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-// Register the ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger)
+import { motion } from 'framer-motion'
 
 const Projects = () => {
-  const containerRef = useRef(null)
-
-  useLayoutEffect(() => {
-    // Create a GSAP context for cleanup and scoping
-    let ctx = gsap.context(() => {
-      
-      const cards = gsap.utils.toArray('.project-card');
-
-      cards.forEach((card) => {
-        gsap.from(card, {
-          opacity: 0,
-          y: 50, 
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%", 
-            toggleActions: "play none none none",
-            once: true
-          }
-        })
-      });
-
-    }, containerRef) 
-
-    return () => ctx.revert() // Cleanup on unmount
-  }, [])
+  // Reusable animation variants for cleaner JSX
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
 
   return (
-    <div ref={containerRef} className='container py-[60px] z-5 bg-[#e8e8e8] relative block'>
+    <div className='container py-[60px] z-5 bg-[#e8e8e8] relative block'>
         <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
             <div className='w-full'>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-[30px] grid-rows-[auto] auto-cols-fr w-full'>
                     
                     {/* --- Image 1 --- */}
-                    <div className='project-card flex w-full'>
+                    <motion.div 
+                      className='project-card flex w-full'
+                      variants={cardVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-15%" }} // approximate 'top 85%'
+                    >
                         <a href="#" className='group h-[400px] rounded-[15px] w-full block relative overflow-hidden max-w-full text-[#7000ff] no-underline bg-black'>
                              <Image
                                 src="/images/dash.jpg"
@@ -54,10 +39,9 @@ const Projects = () => {
                             />
                             <div className='flex gap-x-[50px] gap-y-[30px] z-10 justify-between mx-[30px] mb-[30px] leading-[1.5em] inset-x-0 bottom-0 top-auto absolute'>
                                 <div className='text-white text-[25px] transition-colors duration-300 group-hover:text-[#7000ff]'>Fashion Landing Page for Wally</div>
-                                {/* Added: group-hover:rotate-90 */}
                                 <Image 
                                     src="/icons/turnArrow.svg" 
-                                    alt="down" 
+                                    alt="arrow" 
                                     width={24} 
                                     height={24} 
                                     className='max-w-full inline-block align-middle border-0 transition-transform duration-500 group-hover:rotate-90' 
@@ -65,10 +49,16 @@ const Projects = () => {
                             </div>
                             <div className='bg-gradient-to-t from-[#111111e6] to-transparent absolute inset-0 z-0'></div>
                         </a>
-                    </div>
+                    </motion.div>
 
                     {/* --- Image 2 --- */}
-                    <div className='project-card flex w-full'>
+                    <motion.div 
+                      className='project-card flex w-full'
+                      variants={cardVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-15%" }}
+                    >
                          <a href="#" className='group h-[400px] rounded-[15px] w-full block relative overflow-hidden max-w-full text-[#7000ff] no-underline bg-black'>
                              <Image
                                 src="/images/btc.jpg"
@@ -79,10 +69,9 @@ const Projects = () => {
                             />
                             <div className='flex gap-x-[50px] gap-y-[30px] z-10 justify-between mx-[30px] mb-[30px] leading-[1.5em] inset-x-0 bottom-0 top-auto absolute'>
                                 <div className='text-white text-[25px] transition-colors duration-300 group-hover:text-[#7000ff]'>Shopify App for Nike</div>
-                                {/* Added: group-hover:rotate-90 */}
                                 <Image 
                                     src="/icons/turnArrow.svg" 
-                                    alt="down" 
+                                    alt="arrow" 
                                     width={24} 
                                     height={24} 
                                     className='max-w-full inline-block align-middle border-0 transition-transform duration-500 group-hover:rotate-90' 
@@ -90,10 +79,16 @@ const Projects = () => {
                             </div>
                             <div className='bg-gradient-to-t from-[#111111e6] to-transparent absolute inset-0 z-0'></div>
                         </a>  
-                    </div>
+                    </motion.div>
 
                     {/* --- Image 3 --- */}
-                    <div className='project-card flex w-full'>
+                    <motion.div 
+                      className='project-card flex w-full'
+                      variants={cardVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-15%" }}
+                    >
                         <a href="#" className='group h-[400px] rounded-[15px] w-full block relative overflow-hidden max-w-full text-[#7000ff] no-underline bg-black'>
                              <Image
                                 src="/images/cloud.jpg"
@@ -104,10 +99,9 @@ const Projects = () => {
                             />
                             <div className='flex gap-x-[50px] gap-y-[30px] z-10 justify-between mx-[30px] mb-[30px] leading-[1.5em] inset-x-0 bottom-0 top-auto absolute'>
                                 <div className='text-white text-[25px] transition-colors duration-300 group-hover:text-[#7000ff]'>Courses Website for Pattern</div>
-                                {/* Added: group-hover:rotate-90 */}
                                 <Image 
                                     src="/icons/turnArrow.svg" 
-                                    alt="down" 
+                                    alt="arrow" 
                                     width={24} 
                                     height={24} 
                                     className='max-w-full inline-block align-middle border-0 transition-transform duration-500 group-hover:rotate-90' 
@@ -115,10 +109,16 @@ const Projects = () => {
                             </div>
                             <div className='bg-gradient-to-t from-[#111111e6] to-transparent absolute inset-0 z-0'></div>
                         </a>
-                    </div>
+                    </motion.div>
 
                     {/* --- Image 4 --- */}
-                    <div className='project-card flex w-full'>
+                    <motion.div 
+                      className='project-card flex w-full'
+                      variants={cardVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-15%" }}
+                    >
                         <a href="#" className='group h-[400px] rounded-[15px] w-full block relative overflow-hidden max-w-full text-[#7000ff] no-underline bg-black'>
                              <Image
                                 src="/images/btt.jpg"
@@ -129,10 +129,9 @@ const Projects = () => {
                             />
                             <div className='flex gap-x-[50px] gap-y-[30px] z-10 justify-between mx-[30px] mb-[30px] leading-[1.5em] inset-x-0 bottom-0 top-auto absolute'>
                                 <div className='text-white text-[25px] transition-colors duration-300 group-hover:text-[#7000ff]'>No coding platform for Dotmo</div>
-                                {/* Added: group-hover:rotate-90 */}
                                 <Image 
                                     src="/icons/turnArrow.svg" 
-                                    alt="down" 
+                                    alt="arrow" 
                                     width={24} 
                                     height={24} 
                                     className='max-w-full inline-block align-middle border-0 transition-transform duration-500 group-hover:rotate-90' 
@@ -140,7 +139,7 @@ const Projects = () => {
                             </div>
                             <div className='bg-gradient-to-t from-[#111111e6] to-transparent absolute inset-0 z-0'></div>
                         </a>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>
