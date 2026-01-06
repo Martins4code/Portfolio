@@ -15,7 +15,7 @@ const ServiceCard = ({ children, baseColor = "bg-[#7000ff]", overlayColor = "bg-
   );
 };
 
-const services = () => {
+const Services = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +40,7 @@ const services = () => {
           ease: "power3.out"
         });
       });
-    }, containerRef);
+    }, containerRef.current!);
     return () => ctx.revert();
   }, []);
 
@@ -162,4 +162,4 @@ Our App Development Services encompass the entire spectrum of building innovativ
   )
 }
 
-export default services
+export default Services
