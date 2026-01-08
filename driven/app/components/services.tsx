@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -11,15 +11,11 @@ const ServiceCard = ({
   children, 
   baseColor = "bg-[#7000ff]", 
   overlayColor = "bg-black", 
-  isActive, 
-  onClick,
   index = 0
 }: { 
   children: React.ReactNode, 
   baseColor?: string, 
   overlayColor?: string, 
-  isActive: boolean, 
-  onClick: () => void,
   index?: number
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -46,20 +42,31 @@ const ServiceCard = ({
     }
   }, { scope: cardRef });
 
-  useGSAP(() => {
+  const handleMouseEnter = () => {
     if (overlayRef.current) {
       gsap.to(overlayRef.current, {
-        height: isActive ? "100%" : "0%",
+        height: "100%",
         duration: 0.4,
         ease: "power1.inOut"
       });
     }
-  }, [isActive]);
+  };
+
+  const handleMouseLeave = () => {
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, {
+        height: "0%",
+        duration: 0.4,
+        ease: "power1.inOut"
+      });
+    }
+  };
 
   return (
     <div 
       ref={cardRef}
-      onClick={onClick} 
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className={`service-card cursor-pointer flex flex-col w-full ${baseColor} rounded-[15px] justify-between items-start p-[30px] relative overflow-hidden`}
     >
       <div 
@@ -69,7 +76,7 @@ const ServiceCard = ({
       />
       
       {/* Content wrapper to ensure it stays above the overlay */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full h-full flex flex-col justify-between items-start">
         {children}
       </div>
     </div>
@@ -77,19 +84,13 @@ const ServiceCard = ({
 };
 
 const Services = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const handleCardClick = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
-    <div className='container pb-0 pt-[60px] z-5 bg-[#e8e8e8] relative'>
+    <div className='w-full pb-0 pt-[60px] z-5 bg-[#e8e8e8] relative lg:pt-[130px]'>
         <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
             <div className='grid grid-cols-1 gap-[30px] auto-cols-fr w-full lg:grid-cols-3 '>
               
               {/* --- HEADER SECTION --- */}
-              <div className='flex flex-col w-full col-span-1 row-span-1 opacity-100 gap-[30px] items-center mb-[30px] gap-y-[50px]'>
+              <div className='flex flex-col w-full col-span-1 row-span-1 opacity-100 gap-[30px] items-start mb-[30px] gap-y-[50px]'>
                 <div className='uppercase max-w-[850px] my-0 text-[20px] font-medium'>
                   What We Do
                 </div>
@@ -103,7 +104,7 @@ const Services = () => {
                 <div className='flex flex-col gap-[30px] md:flex-row'>
                   
                   {/* --- CARD 1 --- */}
-                  <ServiceCard index={0} isActive={activeIndex === 0} onClick={() => handleCardClick(0)}>
+                  <ServiceCard index={0}>
                       <div className='w-full relative'>
                         <Image src="icons/globank.svg" 
                               alt="globank" 
@@ -116,14 +117,13 @@ const Services = () => {
                           </div>
                           <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>Our comprehensive Cyber Security Services ensure the protection and resilience of your digital assets and operations. We employ cutting-edge technologies and expert strategies to safeguard your organization against evolving cyber threats.</p>
                       </div>
-                      <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
+                      <a href="" className='border-white text-white hover:bg-white hover:text-black relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
                         View more
                       </a>
                   </ServiceCard> 
 
                   {/* --- CARD 2 --- */}
-                  <ServiceCard index={1} isActive={activeIndex === 1} onClick={() => handleCardClick(1)}>
-                    <div className='flex flex-col md:gap-[60px] lg:gap-[60px]'>
+                  <ServiceCard index={1}>
                             <div className='w-full relative'>
                             <Image src="icons/nextlogo.svg" 
                                   alt="nextlogo" 
@@ -138,10 +138,9 @@ const Services = () => {
                                 Our App Development Services encompass the entire spectrum of building innovative and functional applications tailored to meet your unique business needs.
                               </p>
                           </div>
-                          <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px] md:px-0 md:w-[155px] lg:px-0 lg:w-[155px]'>
+                          <a href="" className='border-white text-white hover:bg-white hover:text-black relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
                             View more
                           </a>
-                    </div>
                       
                   </ServiceCard> 
 
@@ -152,8 +151,7 @@ const Services = () => {
               <div className='col-span-1 row-span-1 w-full'>
                      <div className='flex flex-col gap-[30px]'>
                   
-                  <ServiceCard index={2} isActive={activeIndex === 2} onClick={() => handleCardClick(2)}>
-                    <div className='flex flex-col lg:gap-[60px]'>
+                  <ServiceCard index={2}>
                                 <div className='w-full relative'>
                               <Image src="icons/nextthird.svg" 
                                     alt="nextthird" 
@@ -166,10 +164,9 @@ const Services = () => {
                                 </div>
                                 <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>Our IT Consultancy Services are designed to guide and empower your organization in navigating the complex and ever-changing landscape of information technology.</p>
                             </div>
-                            <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px] md:px-0 md:w-[155px] lg:px-0 lg:w-[155px] '>
+                            <a href="" className='border-white text-white hover:bg-white hover:text-black relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
                               View more
                             </a>
-                    </div>
                       
                   </ServiceCard> 
 
@@ -178,9 +175,8 @@ const Services = () => {
 
               {/* --- CARD 4 SECTION --- */}
               <div className='col-span-1 row-span-1 w-full lg:col-span-2'>
-                  <div className='flex flex-col gap-[30px] lg:flex-row '>
-                        <ServiceCard index={3} baseColor="bg-[#111111]" overlayColor="bg-[#7000ff]" isActive={activeIndex === 3} onClick={() => handleCardClick(3)}>
-                              <div className='flex flex-col lg:gap-[60px]'>
+                  <div className='flex flex-col gap-[30px] lg:flex-row h-full'>
+                        <ServiceCard index={3} baseColor="bg-[#111111]" overlayColor="bg-[#7000ff]">
                                       <div className='w-full relative'>
                                   <Image src="icons/bolt.svg" 
                                           alt="bolt" 
@@ -195,8 +191,7 @@ const Services = () => {
                                         <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] md:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization&apos;s specific needs.</p>
                                   </div>
                               </div>
-                              <a href="" className='border-[#ffffff] text-[#ffffff] relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px] md:px-0 md:w-[155px] lg:px-0 lg:w-[155px] '>View More</a>
-                              </div>
+                              <a href="" className='border-[#ffffff] text-[#ffffff] hover:bg-white hover:text-black relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px]'>View More</a>
                               
                         </ServiceCard>
                   </div>
