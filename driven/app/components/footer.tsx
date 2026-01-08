@@ -84,7 +84,7 @@ const Footer = () => {
   return (
     <div 
       ref={footerRef}
-      className='text-left static bg-[#0000] pb-[50px] lg:sticky lg:bottom-0'>
+      className='text-left static lg:sticky lg:bottom-0 -z-10 bg-[#0000] pb-[50px]'>
       <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
 
           {/* Top Section */}

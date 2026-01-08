@@ -15,7 +15,7 @@ const Header = () => {
          Added 'items-center' and 'justify-between' for layout.
          Added 'px-6 py-4' for spacing.
       */}
-      <div className="hidden lg:flex w-full items-center justify-between  px-[15px] py-[15px] relative z-1000">
+      <div className="hidden lg:flex w-full items-center justify-between px-[15px] py-[15px] relative z-50 bg-[#e8e8e8]">
         
         {/* Logo Section */}
         <div className="">
