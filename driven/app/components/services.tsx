@@ -90,7 +90,7 @@ const Services = () => {
             <div className='grid grid-cols-1 gap-[30px] auto-cols-fr w-full lg:grid-cols-3 '>
               
               {/* --- HEADER SECTION --- */}
-              <div className='flex flex-col w-full col-span-1 row-span-1 opacity-100 gap-[30px] items-start mb-[30px] gap-y-[50px]'>
+              <div className='flex flex-col w-full col-span-1 row-span-1 opacity-100 gap-[30px] items-center lg:items-start mb-[30px] gap-y-[50px]'>
                 <div className='uppercase max-w-[850px] my-0 text-[20px] font-medium'>
                   What We Do
                 </div>
