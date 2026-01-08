@@ -104,7 +104,7 @@ const Footer = () => {
               <div 
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className='w-[200px] h-[200px] border border-dashed border-black rounded-full flex items-center justify-center relative cursor-pointer md:w-[255px] md:h-[255px]'
+                className='w-[200px] h-[200px] shrink-0 border border-dashed border-black rounded-full flex items-center justify-center relative cursor-pointer md:w-[255px] md:h-[255px]'
               >
                   {/* The Link (Magnetic Target) */}
                   <a 
