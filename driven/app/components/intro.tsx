@@ -48,7 +48,7 @@ const Intro = () => {
   return (
     <div className='flex flex-col pt-10 min-h-auto z-2 bg-[#e8e8e8] lg:pt-0'>
       <div className='flex items-center relative w-full h-full top-0 '>
-        <a href="" className="flex flex-col justify-center mr-[15px] mt-10 absolute top-0 right-0 border-4 border-solid border-[#7000ff] rounded-full w-[100px] h-[100px] md:w-[150px] md:h-[150px] md:mt-0 lg:w-[200px] lg:h-[200px]">
+ <a href="" className="flex flex-col justify-center mr-[15px] lg:mr-[30px] mt-10 absolute top-0 right-0 border-4 lg:border-[5px] border-solid border-[#7000ff] rounded-full w-[100px] h-[100px] md:w-[150px] md:h-[150px] md:mt-0 lg:mt-[30px] lg:w-[200px] lg:h-[200px]">
           <div className='w-[100px] h-[100px] md:w-[140px] md:h-[140px] lg:h-[190px] lg:w-[190px] p-0.5 flex relative'>
             <div className='w-[100px] h-[100px] md:w-[140px] md:h-[140px] lg:h-[190px] lg:w-[190px] rounded-full flex justify-center items-center flex-none'>
               <div ref={arrowImageRef} className="absolute">

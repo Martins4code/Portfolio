@@ -10,6 +10,7 @@ import Projects from './components/projects'
 const page = () => {
   return (
     <div>
+      
       <Header />
       <Intro />
       <Timeline/>

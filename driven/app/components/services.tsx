@@ -24,14 +24,14 @@ const ServiceCard = ({
   useGSAP(() => {
     if (cardRef.current) {
       gsap.fromTo(cardRef.current, 
-        { x: 200, scale: 0.8, opacity: 0 },
+        { opacity: 0, scale: 0.5, rotateY: 90, transformOrigin: "right center" },
         {
-          x: 0, 
-          scale: 1, 
           opacity: 1, 
-          duration: 0.4, 
-          ease: "power1.out", 
-          delay: index * 0.1,
+          scale: 1, 
+          rotateY: 0, 
+          duration: 0.8, 
+          ease: "power2.out", 
+          delay: index * 0.3,
           scrollTrigger: {
             trigger: cardRef.current,
             start: "top 90%",
