@@ -1,7 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion } from "framer-motion";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ServiceCard = ({ 
   children, 
@@ -18,30 +22,57 @@ const ServiceCard = ({
   onClick: () => void,
   index?: number
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (cardRef.current) {
+      gsap.fromTo(cardRef.current, 
+        { x: 200, scale: 0.8, opacity: 0 },
+        {
+          x: 0, 
+          scale: 1, 
+          opacity: 1, 
+          duration: 0.4, 
+          ease: "power1.out", 
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top 90%",
+            once: true
+          }
+        }
+      );
+    }
+  }, { scope: cardRef });
+
+  useGSAP(() => {
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, {
+        height: isActive ? "100%" : "0%",
+        duration: 0.4,
+        ease: "power1.inOut"
+      });
+    }
+  }, [isActive]);
+
   return (
-    <motion.div 
+    <div 
+      ref={cardRef}
       onClick={onClick} 
-      // --- Scroll Trigger Equivalent ---
-      initial={{ x: 200, scale: 0.8, opacity: 0 }} // Starting state (Offscreen right, small, invisible)
-      whileInView={{ x: 0, scale: 1, opacity: 1 }} // End state (Normal)
-      viewport={{ once: true, margin: "-10%" }} // Triggers when element is 10% into view (similar to top 90%)
-      transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.1 }} // Smooth easing
-      // --------------------------------
       className={`service-card cursor-pointer flex flex-col w-full ${baseColor} rounded-[15px] justify-between items-start p-[30px] relative overflow-hidden`}
     >
-      {/* --- Overlay Animation --- */}
-      <motion.div 
-        initial={false}
-        animate={{ height: isActive ? "100%" : "0%" }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+      <div 
+        ref={overlayRef}
         className={`${overlayColor} w-full absolute inset-x-0 bottom-0 top-auto z-0`}
+        style={{ height: 0 }}
       />
       
       {/* Content wrapper to ensure it stays above the overlay */}
       <div className="relative z-10 w-full">
         {children}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -55,7 +86,7 @@ const Services = () => {
   return (
     <div className='container pb-0 pt-[60px] z-5 bg-[#e8e8e8] relative'>
         <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
-            <div className='grid grid-cols-1 gap-[30px] auto-cols-fr w-full '>
+            <div className='grid grid-cols-1 gap-[30px] auto-cols-fr w-full lg:grid-cols-3 '>
               
               {/* --- HEADER SECTION --- */}
               <div className='flex flex-col w-full col-span-1 row-span-1 opacity-100 gap-[30px] items-center mb-[30px] gap-y-[50px]'>
@@ -68,7 +99,7 @@ const Services = () => {
               </div>
 
               {/* --- CARDS COLUMN --- */}
-              <div className='col-span-1 row-span-1 w-full'>
+              <div className='col-span-1 row-span-1 w-full lg:col-span-2'>
                 <div className='flex flex-col gap-[30px] md:flex-row'>
                   
                   {/* --- CARD 1 --- */}
@@ -92,23 +123,26 @@ const Services = () => {
 
                   {/* --- CARD 2 --- */}
                   <ServiceCard index={1} isActive={activeIndex === 1} onClick={() => handleCardClick(1)}>
-                      <div className='w-full relative'>
-                        <Image src="icons/nextlogo.svg" 
-                              alt="nextlogo" 
-                              width={142} 
-                              height={41} 
-                              className='max-w-full inline-block align-middle border-0'/>
-                          <div className='flex flex-col items-start gap-[15px] text-white border-b justify-between w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
-                              <span className='text-white text-[25px] items-center leading-[1.2em]'>App Development</span>
-                              <div>2023</div>
+                    <div className='flex flex-col md:gap-[60px] lg:gap-[60px]'>
+                            <div className='w-full relative'>
+                            <Image src="icons/nextlogo.svg" 
+                                  alt="nextlogo" 
+                                  width={142} 
+                                  height={41} 
+                                  className='max-w-full inline-block align-middle border-0'/>
+                              <div className='flex flex-col items-start gap-[15px] text-white border-b w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
+                                  <span className='text-white text-[25px] items-center leading-[1.2em]'>App Development</span>
+                                  <div>2023</div>
+                              </div>
+                              <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>
+                                Our App Development Services encompass the entire spectrum of building innovative and functional applications tailored to meet your unique business needs.
+                              </p>
                           </div>
-                          <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>
-                            Our App Development Services encompass the entire spectrum of building innovative and functional applications tailored to meet your unique business needs.
-                          </p>
-                      </div>
-                      <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
-                        View more
-                      </a>
+                          <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px] md:px-0 md:w-[155px] lg:px-0 lg:w-[155px]'>
+                            View more
+                          </a>
+                    </div>
+                      
                   </ServiceCard> 
 
                 </div>
@@ -119,31 +153,35 @@ const Services = () => {
                      <div className='flex flex-col gap-[30px]'>
                   
                   <ServiceCard index={2} isActive={activeIndex === 2} onClick={() => handleCardClick(2)}>
-                      <div className='w-full relative'>
-                        <Image src="icons/nextthird.svg" 
-                              alt="nextthird" 
-                              width={156} 
-                              height={41} 
-                              className='max-w-full inline-block align-middle border-0'/>
-                          <div className='flex flex-col items-start gap-[15px] text-white border-b justify-between w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
-                              <span className='text-white text-[25px] items-center leading-[1.2em]'>IT Consultancy</span>
-                              <div>2023</div>
-                          </div>
-                          <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>Our IT Consultancy Services are designed to guide and empower your organization in navigating the complex and ever-changing landscape of information technology.</p>
-                      </div>
-                      <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px]'>
-                        View more
-                      </a>
+                    <div className='flex flex-col lg:gap-[60px]'>
+                                <div className='w-full relative'>
+                              <Image src="icons/nextthird.svg" 
+                                    alt="nextthird" 
+                                    width={156} 
+                                    height={41} 
+                                    className='max-w-full inline-block align-middle border-0'/>
+                                <div className='flex flex-col items-start gap-[15px] text-white border-b justify-between w-full my-5 pb-5 text-[25px] leading-[1.2em]'>
+                                    <span className='text-white text-[25px] items-center leading-[1.2em]'>IT Consultancy</span>
+                                    <div>2023</div>
+                                </div>
+                                <p className='text-white mb-[30px] mt-2.5 font-normal leading-[1.5em]'>Our IT Consultancy Services are designed to guide and empower your organization in navigating the complex and ever-changing landscape of information technology.</p>
+                            </div>
+                            <a href="" className='border-white text-white relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block cursor-pointer no-underline items-center text-[20px] md:px-0 md:w-[155px] lg:px-0 lg:w-[155px] '>
+                              View more
+                            </a>
+                    </div>
+                      
                   </ServiceCard> 
 
                 </div>
               </div>
 
               {/* --- CARD 4 SECTION --- */}
-              <div className='col-span-1 row-span-1 w-full'>
-                  <div className='flex flex-col gap-[30px]'>
+              <div className='col-span-1 row-span-1 w-full lg:col-span-2'>
+                  <div className='flex flex-col gap-[30px] lg:flex-row '>
                         <ServiceCard index={3} baseColor="bg-[#111111]" overlayColor="bg-[#7000ff]" isActive={activeIndex === 3} onClick={() => handleCardClick(3)}>
-                              <div className='w-full relative'>
+                              <div className='flex flex-col lg:gap-[60px]'>
+                                      <div className='w-full relative'>
                                   <Image src="icons/bolt.svg" 
                                           alt="bolt" 
                                           width={145} 
@@ -157,7 +195,9 @@ const Services = () => {
                                         <p className='mt-0 mb-[30px] text-white font-medium leading-[1.5em] md:columns-2'>Our Cloud Migration Services facilitate a seamless transition of your IT infrastructure, applications, and data to cloud environments, enabling you to leverage the benefits of agility, scalability, and cost-efficiency. We ensure a structured and efficient migration process tailored to your organization&apos;s specific needs.</p>
                                   </div>
                               </div>
-                              <a href="" className='border-[#ffffff] text-[#ffffff] relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px] '>View More</a>
+                              <a href="" className='border-[#ffffff] text-[#ffffff] relative border-2 border-solid text-center tracking-[-0.4px] transform-none bg-[#0000] rounded-[60px] py-2.5 px-[30px] leading-[1em] transition-all duration-300 inline-block no-underline items-center text-[20px] md:px-0 md:w-[155px] lg:px-0 lg:w-[155px] '>View More</a>
+                              </div>
+                              
                         </ServiceCard>
                   </div>
               </div>

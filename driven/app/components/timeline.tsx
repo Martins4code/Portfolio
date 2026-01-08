@@ -20,26 +20,33 @@ const Timeline = () => {
 
   useGSAP(() => {
     gsap.set([scale1Ref.current, scale2Ref.current, scale3Ref.current], { scale: 0 });
-    const tl = gsap.timeline({ repeat: -1 });
-    // For lg screens, you can modify the width values here, e.g., extend to 80px instead of 60px, and adjust scaleNow sizes accordingly
-    tl.to(line1Ref.current, { width: '60px', duration: 1, ease: 'power2.inOut' })
-      .to(scale1Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(num1Ref.current, { color: '#ffffff' }, '<')
-      .to(line1Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
-      .to(scale1Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(num1Ref.current, { color: '#7000ff' }, '<')
-      .to(line2Ref.current, { width: '60px', duration: 1, ease: 'power2.inOut' })
-      .to(scale2Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(num2Ref.current, { color: '#ffffff' }, '<')
-      .to(line2Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
-      .to(scale2Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(num2Ref.current, { color: '#7000ff' }, '<')
-      .to(line3Ref.current, { width: '60px', duration: 1, ease: 'power2.inOut' })
-      .to(scale3Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(num3Ref.current, { color: '#ffffff' }, '<')
-      .to(line3Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
-      .to(scale3Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
-      .to(num3Ref.current, { color: '#7000ff' }, '<');
+
+    const mm = gsap.matchMedia();
+
+    const animate = (width: string) => {
+      const tl = gsap.timeline({ repeat: -1 });
+      tl.to(line1Ref.current, { width: width, duration: 1, ease: 'power2.inOut' })
+        .to(scale1Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
+        .to(num1Ref.current, { color: '#ffffff' }, '<')
+        .to(line1Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
+        .to(scale1Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
+        .to(num1Ref.current, { color: '#7000ff' }, '<')
+        .to(line2Ref.current, { width: width, duration: 1, ease: 'power2.inOut' })
+        .to(scale2Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
+        .to(num2Ref.current, { color: '#ffffff' }, '<')
+        .to(line2Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
+        .to(scale2Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
+        .to(num2Ref.current, { color: '#7000ff' }, '<')
+        .to(line3Ref.current, { width: width, duration: 1, ease: 'power2.inOut' })
+        .to(scale3Ref.current, { scale: 1, duration: 1, ease: 'power2.inOut' }, '<')
+        .to(num3Ref.current, { color: '#ffffff' }, '<')
+        .to(line3Ref.current, { width: '30px', duration: 1, ease: 'power2.inOut' })
+        .to(scale3Ref.current, { scale: 0, duration: 1, ease: 'power2.inOut' }, '<')
+        .to(num3Ref.current, { color: '#7000ff' }, '<');
+    };
+
+    mm.add("(min-width: 1024px)", () => animate('300px'));
+    mm.add("(max-width: 1023px)", () => animate('60px'));
 
     if (containerRef.current) {
       gsap.from(containerRef.current.children, {
@@ -61,27 +68,27 @@ const Timeline = () => {
            <div ref={containerRef} className='flex flex-col justify-center w-full'>
 
               <div className='flex items-center w-full min-h-[100px]'>
-                <div className='flex w-[60px] h-[60px] text-[20px] md:text-[50px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden md:w-[120px] md:h-[120px]'>
-                  <div ref={scale1Ref} className='scaleNow w-[60px] h-[60px] md:w-[120px] md:h-[120px] bg-[#7000ff] rounded-full absolute text-[20px] md:text-[50px] z-index-0'></div>
-                  <div ref={num1Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px] md:text-[50px]'>1</div>
+                <div className='flex w-[60px] h-[60px] text-[20px] md:text-[50px] lg:text-[80px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px]'>
+                  <div ref={scale1Ref} className='scaleNow w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] bg-[#7000ff] rounded-full absolute text-[20px] md:text-[50px] z-index-0'></div>
+                  <div ref={num1Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px] md:text-[50px] lg:text-[80px]'>1</div>
                 </div>
-                <div className='flex items-center '>
+                <div className='flex items-center'>
                   <div ref={line1Ref} className='myLine flex w-[30px] h-px bg-[#7000ff] opacity-[0.4]'></div>
                   <div className='flex bg-[#7000ff33] rounded-full justify-center items-center w-[30px] h-[30px]'>
                       <div className='bg-[#7000ff] rounded-full w-2.5 h-2.5 absolute'></div>
                   </div>
                 </div>
                 <div className='ml-5 max-w-[465px] text-[60px] leading-[1em]'>
-                  <h2 className='my-2.5 text-[30px] md:text-[42px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>I’m a pixel<span className="block sm:hidden"></span> perfectionist</h2>
+                  <h2 className='my-2.5 text-[30px] md:text-[42px] lg:text-[60px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>I’m a pixel<span className="block sm:hidden"></span> perfectionist</h2>
                 </div>
               </div>
 
-              <div className='h-[100px] ml-[25px] border border-dashed border-[#7000ff66] w-px md:ml-[60px] md:h-[148.667px]'></div>
+              <div className='h-[100px] ml-[25px] border border-dashed border-[#7000ff66] w-px md:ml-[60px] md:h-[148.667px] lg:ml-[75px] lg:h-[300px]'></div>
 
               <div className='flex items-center w-full min-h-[100px]'>
-                <div className='flex w-[60px] h-[60px] text-[20px] md:text-[50px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden md:w-[120px] md:h-[120px]'>
-                  <div ref={scale2Ref} className='scaleNow w-[60px] h-[60px] md:w-[120px] md:h-[120px] bg-[#7000ff] rounded-full absolute text-[20px] md:text-[50px] z-index-0'></div>
-                  <div ref={num2Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px] md:text-[50px]'>2</div>
+                <div className='flex w-[60px] h-[60px] text-[20px] md:text-[50px] lg:text-[80px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px]'>
+                  <div ref={scale2Ref} className='scaleNow w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] bg-[#7000ff] rounded-full absolute text-[20px] md:text-[50px] z-index-0'></div>
+                  <div ref={num2Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px] md:text-[50px] lg:text-[80px]'>2</div>
                 </div>
                 <div className='flex items-center '>
                   <div ref={line2Ref} className='myLine flex w-[30px] h-px bg-[#7000ff] opacity-[0.4]'></div>
@@ -90,16 +97,16 @@ const Timeline = () => {
                   </div>
                 </div>
                 <div className='ml-5 max-w-[465px] text-[60px] leading-[1em]'>
-                  <h2 className='my-2.5 text-[30px] md:text-[42px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>Working with 2D,<span className="block sm:hidden"></span> 3D, 4D</h2>
+                  <h2 className='my-2.5 text-[30px] md:text-[42px] lg:text-[60px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>Working with 2D,<span className="block sm:hidden"></span> 3D, 4D</h2>
                 </div>
               </div>
 
-              <div className='h-[100px] ml-[25px] border border-dashed border-[#7000ff66] w-px md:ml-[60px] md:h-[148.667px]'></div>
+              <div className='h-[100px] ml-[25px] border border-dashed border-[#7000ff66] w-px md:ml-[60px] md:h-[148.667px] lg:ml-[75px] lg:h-[300px]'></div>
 
               <div className='flex items-center w-full min-h-[100px]'>
-                <div className='flex w-[60px] h-[60px] text-[20px] md:text-[50px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden md:w-[120px] md:h-[120px]'>
-                  <div ref={scale3Ref} className='scaleNow w-[60px] h-[60px] md:w-[120px] md:h-[120px] bg-[#7000ff] rounded-full absolute text-[20px] md:text-[50px] z-index-0'></div>
-                  <div ref={num3Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px] md:text-[50px]'>3</div>
+                <div className='flex w-[60px] h-[60px] text-[20px] md:text-[50px] lg:text-[80px] border-[#7000ff] border-3 border-solid rounded-full text-[#7000ff] flex-none justify-center items-center leading-[1em] relative overflow-hidden md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px]'>
+                  <div ref={scale3Ref} className='scaleNow w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] bg-[#7000ff] rounded-full absolute text-[20px] md:text-[50px] z-index-0'></div>
+                  <div ref={num3Ref} className='NumTransition text-[#7000ff] z-index-2 relative text-[20px] md:text-[50px] lg:text-[80px]'>3</div>
                 </div>
                 <div className='flex items-center '>
                   <div ref={line3Ref} className='myLine flex w-[30px] h-px bg-[#7000ff] opacity-[0.4]'></div>
@@ -108,7 +115,7 @@ const Timeline = () => {
                   </div>
                 </div>
                 <div className='ml-5 max-w-[465px] text-[60px] leading-[1em]'>
-                  <h2 className='my-2.5 text-[30px] md:text-[42px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>I love make things interactive</h2>
+                  <h2 className='my-2.5 text-[30px] md:text-[42px] lg:text-[60px] text-[#111] tracking-[-1.6px] font-medium leading-[1em]'>I love make things interactive</h2>
                 </div>
               </div>
 

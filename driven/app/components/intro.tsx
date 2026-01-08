@@ -46,43 +46,43 @@ const Intro = () => {
   })
 
   return (
-    <div className='flex flex-col pt-10 min-h-auto z-2 bg-[#e8e8e8] lg'>
+    <div className='flex flex-col pt-10 min-h-auto z-2 bg-[#e8e8e8] lg:pt-0'>
       <div className='flex items-center relative w-full h-full top-0 '>
-        <a href="" className="flex flex-col justify-center mr-[15px] mt-10 absolute top-0 right-0 border-4 border-solid border-[#7000ff] rounded-full w-[100px] h-[100px] md:w-[150px] md:h-[150px] md:mt-0">
-          <div className='w-[100px] h-[100px] md:w-[140px] md:h-[140px] p-0.5 flex relative'>
-            <div className='w-[100px] h-[100px] md:w-[140px] md:h-[140px] rounded-full flex justify-center items-center flex-none'>
+        <a href="" className="flex flex-col justify-center mr-[15px] mt-10 absolute top-0 right-0 border-4 border-solid border-[#7000ff] rounded-full w-[100px] h-[100px] md:w-[150px] md:h-[150px] md:mt-0 lg:w-[200px] lg:h-[200px]">
+          <div className='w-[100px] h-[100px] md:w-[140px] md:h-[140px] lg:h-[190px] lg:w-[190px] p-0.5 flex relative'>
+            <div className='w-[100px] h-[100px] md:w-[140px] md:h-[140px] lg:h-[190px] lg:w-[190px] rounded-full flex justify-center items-center flex-none'>
               <div ref={arrowImageRef} className="absolute">
                 <Image src="icons/arrow.svg" 
                   alt="down" 
                   width={28} 
                   height={40} 
-                  className='max-w-full transform rotate-45 scale-100 md:w-[42px] md:h-[60px]' />
+                  className='max-w-full transform rotate-45 scale-100 md:w-[42px] md:h-[60px] lg:w-[72px] lg:h-20' />
               </div>
             </div>
           </div>
         </a>
       </div>
-      <div ref={containerRef} className='flex flex-col px-[15px] relative items-center max-w-[1200px] mx-auto md:mx-0'>
+      <div ref={containerRef} className='flex flex-col px-[15px] relative items-center max-w-[1200px] mx-auto md:mx-0 lg:mx-[32.33px]'>
 
-        <div className='flex w-[60%] items-start mr-auto flex-wrap md:w-[419.409px] md:h-[146px]'>
-            <h1 ref={titleRef} className='text-[40px] font-medium my-2.5 leading-[1em] tracking-[-2.2px] md:w-full md:h-full md:text-[50px]'>
+        <div className='flex w-[60%] items-start mr-auto flex-wrap md:w-[419.409px] md:h-[146px] lg:w-[581.41px] lg:h-[168px]'>
+            <h1 ref={titleRef} className='text-[40px] font-medium my-2.5 leading-[1em] tracking-[-2.2px] md:w-full md:h-full md:text-[50px] lg:text-[70px]'>
               CREATIVE<br/>
-              <span className='inline-block w-[163px] h-[50px] my-[15px] mr-[15px] md:mt-5 md:mr-[30px]'>
+              <span className='inline-block w-[163px] h-[50px] my-[15px] mr-[15px] md:mt-5 md:mr-[30px] lg:w-auto lg:h-[70px] lg:mb-0'>
                 <Image
                   src="icons/UX_UX.svg"
                   alt="ui"
                   width={297}
                   height={93}
-                  className='inline-block w-full h-full'
+                  className='inline-block w-full h-full mb-5'
                 />
               </span>
               DESIGNER
             </h1>
         </div>
 
-        <div className='flex flex-col gap-[50px] w-full mt-10 items-end'>
+        <div className='flex flex-col gap-[50px] w-full mt-10 items-end lg:flex-row lg:gap-x-20'>
             <div className='flex flex-col text-center items-center gap-[30px] gap-y-[25px] md:flex-row md:text-start md:items-end'>
-              <div ref={profileImgRef} className='w-[250px] h-[300px] rounded-[15px] flex-none overflow-hidden'>
+              <div ref={profileImgRef} className='w-[250px] h-[300px] rounded-[15px] flex-none overflow-hidden lg:w-[250px] lg:h-[350px]'>
                 <Image
                   src="/images/profile-pic.webp"
                   alt="someguy"
@@ -96,7 +96,7 @@ const Intro = () => {
               </div>
             </div>
 
-            <div className='flex flex-col flex-none gap-[30px] text-center items-center w-full mr-0 md:text-start md:items-start md:w-[40%] md:mr-auto'>
+            <div className='flex flex-col flex-none gap-[30px] text-center items-center w-full mr-0 md:text-start md:items-start md:w-[40%] md:mr-auto lg:w-[30%]'>
                   <div ref={socialsRef} className='flex flex-row gap-5'>
                   <a href="https://www.instagram.com/" className='Socials'>
                     <div className='initials'>in</div>
@@ -111,7 +111,7 @@ const Intro = () => {
                     <div className='hoverMode'>Twitter</div>
                   </a>
                   </div>
-                  <div ref={nameRef} className='tracking-[-2.2px] uppercase leading-[1em] text-[40px] md:text-[50px]'>Marcel Apitty</div>
+                  <div ref={nameRef} className='tracking-[-2.2px] uppercase leading-[1em] text-[40px] md:text-[50px] lg:text-[70px]'>Marcel Apitty</div>
             </div>
         </div>
 

@@ -84,17 +84,17 @@ const Footer = () => {
   return (
     <div 
       ref={footerRef}
-      className='text-left static bg-[#0000] pb-[50px]'>
+      className='text-left static bg-[#0000] pb-[50px] lg:sticky'>
       <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
 
           {/* Top Section */}
-          <div className='flex flex-col gap-y-[50px] gap-x-[30px] justify-center items-center mb-[50px] w-full'>
+          <div className='flex flex-col gap-y-[50px] gap-x-[30px] justify-center items-center mb-[50px] w-full  lg:flex-row'>
               <div className='flex flex-col justify-between items-start w-full'>
-                  <div className='flex flex-col gap-x-[50px] gap-y-[30px] items-center w-full'>
+                  <div className='flex flex-col gap-x-[50px] gap-y-[30px] items-center w-full lg:items-start lg:gap-[50px]'>
                       <a href='#' className='relative inline-block'>
                         <Image src="/icons/hisName.svg" alt="Name" width={167} height={18} className='block w-auto h-auto'/>
                       </a>
-                      <p className='text-[40px] text-center tracking-[-1.6px] uppercase max-w-7xl my-0 font-medium leading-[1.2em] '>
+                      <p className='text-[40px] text-center tracking-[-1.6px] uppercase max-w-7xl my-0 font-medium leading-[1.2em] lg:text-start lg:text-[50px]'>
                         I don’t build websites, I build <span className='text-[#7000ff]'>world-class brands</span> and sustainable businesses
                       </p>
                   </div>
@@ -124,8 +124,8 @@ const Footer = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className='flex flex-col-reverse gap-y-[50px] items-center justify-between w-full'>
-            <div className='flex flex-col text-center items-center'>
+          <div className='flex flex-col-reverse gap-y-[50px] items-center justify-between w-full lg:flex-row lg:mt-[30px] lg:items-start'>
+            <div className='flex flex-col text-center items-center '>
                 <div className='text-center w-full leading-[1.6em] inline'>
                   © Marcel Apitty. All Rights Reserved.
                   <a href="" className='ml-[5px] text-[#111] tracking-[0.2px] mr-[5px] no-underline inline items-center text-[20px] leading-[1.2em] bg-[#0000] hover:text-[#7000ff] transition-all duration-200 '>Licensing</a>
