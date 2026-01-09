@@ -106,13 +106,13 @@ const Header = () => {
                   onClick={() => setDemosOpen(!demosOpen)}
                   className="flex justify-between items-center w-full hover:text-violet-600 transition-colors text-left font-medium"
                 >
-                  <span className="">Demos</span>
+                  <span className="text-[18px]">Demos</span>
                   <span className={`transition-transform duration-300 ${demosOpen ? 'rotate-180' : ''}`}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                   </span>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${demosOpen ? 'max-h-[300px] mt-4' : 'max-h-0'}`}>
-                  <div className="flex flex-col gap-4 ml-4 text-[18px] text-black text-small">
+                  <div className="flex flex-col gap-4 ml-4 text-[18px] text-black">
                     <a href="#" className="hover:text-violet-600 transition-colors">Home 1</a>
                     <a href="#" className="hover:text-violet-600 transition-colors">Home 2</a>
                     <a href="#" className="hover:text-violet-600 transition-colors">Home 3</a>
@@ -122,20 +122,20 @@ const Header = () => {
                 </div>
               </div>
 
-              <a href="#work" className="hover:text-violet-600 transition-colors font-medium">Work</a>
+              <a href="#work" className="hover:text-violet-600 transition-colors text-[18px] text-black">Work</a>
               
               <div className="flex flex-col">
                 <button 
                   onClick={() => setPagesOpen(!pagesOpen)}
                   className="flex justify-between items-center w-full hover:text-violet-600 transition-colors text-left font-medium"
                 >
-                  <span>Pages</span>
+                  <span className="text-[18px]">Pages</span>
                   <span className={`transition-transform duration-300 ${pagesOpen ? 'rotate-180' : ''}`}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                   </span>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${pagesOpen ? 'max-h-[1200px] mt-4' : 'max-h-0'}`}>
-                  <div className="flex flex-col gap-4 ml-4 text-[19px] text-black border-l  border-gray-100 pl-4">
+                  <div className="flex flex-col gap-4 ml-4 text-[18px] text-black border-l  border-gray-100 pl-4">
                     {pagesList.map((page, index) => (
                       <a key={index} href="#" className="hover:text-violet-600 transition-colors">{page}</a>
                     ))}
@@ -143,7 +143,7 @@ const Header = () => {
                 </div>
               </div>
               
-              <a href="#contact" className="hover:text-violet-600 transition-colors font-medium">Let Us Talk</a>
+              <a href="#contact" className="hover:text-violet-600 transition-colors text-[18px] text-black">Let Us Talk</a>
             </nav>
 
             {/* Footer Section */}
@@ -153,7 +153,7 @@ const Header = () => {
               </div>
               <div className="text-[18px] text-black whitespace-nowrap">
                 Currently UI/UX Designer at{" "}
-                <a href="#" className="text-violet-600 text-small hover:underline">Spike</a>
+                <a href="#" className="text-violet-600 text-[18px] hover:underline">Spike</a>
               </div>
             </div>
           </div>
