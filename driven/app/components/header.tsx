@@ -147,7 +147,7 @@ const Header = () => {
             </nav>
 
             {/* Footer Section */}
-            <div className="mt-auto space-y-4 pt-10 border-t border-gray-100">
+            <div className="mt-auto space-y-4 pt-10 ">
               <div className="text-[20px] font-medium text-black whitespace-nowrap">
                 Warsaw, Poland
               </div>
