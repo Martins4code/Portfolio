@@ -135,7 +135,7 @@ const Header = () => {
                   </span>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${pagesOpen ? 'max-h-[1200px] mt-4' : 'max-h-0'}`}>
-                  <div className="flex flex-col gap-4 ml-4 text-[18px] text-black border-l  border-gray-100 pl-4">
+                  <div className="flex flex-col gap-4 ml-4 text-[18px] text-black 0 pl-4">
                     {pagesList.map((page, index) => (
                       <a key={index} href="#" className="hover:text-violet-600 transition-colors">{page}</a>
                     ))}
