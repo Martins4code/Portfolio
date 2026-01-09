@@ -7,33 +7,33 @@ import { ArrowUpRight, Monitor, BookOpen, Film, CheckCircle2 } from 'lucide-reac
 
 export default function AboutPage (){
   return (
-    <div className='container p-3 lg:ml bg-gray-200'>
+    <div className='flex pt-[30px] justify-center items-center pb-0 z-5 bg-[#e8e8e8] relative'>
       
 
 
-      <main className="max-w-7xl mx-auto px-6 pt-32 pb-20 space-y-32">
+      <div className="flex flex-col flex-1 items-center max-w-[1200px] mx-auto px-[15px] relative">
         
         {/* Hero Section */}
-        <section className="flex flex-col md:flex-row justify-between items-end gap-12">
-          <div className="space-y-4">
-            <h1 className=" text-[40px] lg:text-[70px] md:text-8xl font-bold tracking-tighter uppercase leading-[0.9]">
-              About <br /> <span className="text-violet-600">Marcel Apitty</span>
-            </h1>
-          </div>
+        <div className="flex flex-col gap-y-5 justify-between items-center w-full">
 
-           <div className="w-full w-[382px] h-[200px] lg:w-[702px] h-[350px] relative shrink-0">
+            <h1 className="opacity-100 text-center w-[50%] tracking-[-3px] uppercase leading-[1.2em] text-[40px] mx-2.5 font-medium">
+              About <span className="text-[#7000ff]">Marcel Apitty</span>
+            </h1>
+
+
+                    <div className="w-full h-[200px] rounded-[15px] overflow-hidden">
                       <Image
                         src="/images/profile-pic.webp"
                         alt="banner-image"
-                        width={500}
-                        height={700}
-                        className="w-full h-full object-cover rounded-xl border-2 border-gray-300"
+                        width={1600}
+                        height={800}
+                        className="object-cover w-full h-full max-x-full inline-block align-middle border-0"
                       />
                     </div>
 
-        </section>
+        </div>
 
-      </main>
+      </div>
 
     </div>
   );

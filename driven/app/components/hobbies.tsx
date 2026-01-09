@@ -25,51 +25,59 @@ const hobbies = [
 
 export default function HobbiesList() {
   return (
-    <section className="bg-[#050505] min-h-screen text-white py-24 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Section Label */}
-        <h2 className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-widest mb-16 md:mb-24">
-          My Hobbies
-        </h2>
+    <div className="pb-0 pt-[60px] z-5 bg-[#e8e8e8] relative block">
+      <div className="flex flex-col items-center max-w-[1200px] px-[15px] relative opacity-100 bg-[#111] rounded-[15px] mx-[15px] py-[50px]">
+        <div className='w-full'>
+                    {/* Section Label */}
+                    <div className='w-full max-w-[350px]'>
+                          <div className="opacity-100 text-white">
+                            My Hobbies
+                          </div>
+                    </div>
+                  
 
-        {/* Hobbies List */}
-        <div className="space-y-24 md:space-y-32">
-          {hobbies.map((hobby, index) => (
-            <div key={index} className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-20 group">
-              
-              {/* Left Side: Text Content */}
-              <div className="flex-1 space-y-6">
-                <h3 className="text-4xl md:text-6xl font-normal tracking-tight uppercase">
-                  {hobby.title}
-                </h3>
-                
-                {/* Purple Pills */}
-                <div className="flex flex-wrap gap-3">
-                  {hobby.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex} 
-                      className="px-5 py-2 bg-[#6b21a8] text-white text-xs md:text-sm font-medium rounded-full hover:bg-[#7e22ce] transition-colors cursor-default"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                  {/* Hobbies List */}
+      
+                    {hobbies.map((hobby, index) => (
+                      <div key={index} className="flex flex-col gap-y-20 w-full mt-[50px]">
 
-              {/* Right Side: Image */}
-              <div className="w-full md:w-[500px] aspect-[16/9] overflow-hidden rounded-2xl md:rounded-3xl bg-zinc-900 relative">
-                <img 
-                  src={hobby.image} 
-                  alt={hobby.alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out opacity-90"/>
-              </div>
+                        <div className='flex flex-col gap-[50px] justify-between opacity-100 '>
 
-            </div>
-          ))}
-        </div>
+                                              {/* Left Side: Text Content */}
+                                    <div className="gap-y-[30px] flex flex-col">
+                                            <div className="text-[40px] text-[#ffffff] tracking-[-1.6] uppercase leading-[1em]">
+                                              {hobby.title}
+                                            </div>
+                                            
+                                            {/* Purple Pills */}
+                                            <div className="flex gap-2.5 flex-wrap">
+                                              {hobby.tags.map((tag, tagIndex) => (
+                                                <div 
+                                                  key={tagIndex} 
+                                                  className="bg-[#7000ff] text-[#ffffff] rounded-[60px] py-2.5 px-[30px] leading-[1em]"
+                                                >
+                                                  {tag}
+                                                </div>
+                                              ))}
+                                            </div>
+                                    </div>
+
+                                    {/* Right Side: Image */}
+                                    <div className="w-full rounded-[15px] flex-none h-[360px] overflow-hidden">
+                                      <img 
+                                        src={hobby.image} 
+                                        alt={hobby.alt}
+                                        className="object-cover w-full h-full max-w-100% inline-block align-middle border-0"/>
+                                    </div>
+
+                        </div>
+                        
+                       
+                      </div>
+                    ))}
+                  </div>
 
       </div>
-    </section>
+    </div>
   );
 }

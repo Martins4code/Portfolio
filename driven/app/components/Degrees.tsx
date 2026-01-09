@@ -3,30 +3,40 @@ import React from 'react'
 
 // Mock data
 const degrees = [
-  { year: "2006 – 2015", title: "California Secondary School", desc: "Foundational arts and basic computer sciences." },
-  { year: "2015 – 2019", title: "College of Tech, CA", desc: "Deep dive into Computer Technology and front-end fundamentals." },
-  { year: "2019 – 2022", title: "University of Design, CA", desc: "Mastered UI/UX principles and modern product design." },
+  { year: "2006 – 2015", title: "California Secondary School", desc: "Lorem ipsum dolor sit amet consectetur. Velit semper fermentum mattis volutpat cras. Magna tortor porta cursus maecenas." },
+  { year: "2015 – 2019", title: "College of Tech, CA", desc: "Lorem ipsum dolor sit amet consectetur. Velit semper fermentum mattis volutpat cras. Magna tortor porta cursus maecenas." },
+  { year: "2019 – 2022", title: "University of Design, CA", desc: "Lorem ipsum dolor sit amet consectetur. Velit semper fermentum mattis volutpat cras. Magna tortor porta cursus maecenas." },
 ];
 
 
 const Degrees = () => {
   return (
-    <div className='container p-3 lg:ml bg-gray-200'>
+    <div className='py-[60px] z-5 bg-[#e8e8e8] relative block'>
            {/* Degrees Section */}
-        <div className="bg-violet-600 text-white p-8 rounded-[1rem] ">
-          <h2 className="text-[20px] font-bold uppercase tracking-[0.3em] mb-12">My Degree</h2>
-          <div className="flex flex-col lg:flex-col gap-12">
-            {degrees.map((item, i) => (
-              <div key={i} className="group cursor-default">
-                <div className='bg-purple-400 rounded-full w-fit px-5 py-2'>
-                    <p className="font-mono text-[20px] text-xs">{item.year}</p>
+        <div className="flex flex-col py-[30px] bg-[#7000ff] rounded-[15px] mx-[15px] items-center max-w-[1200px] px-[15px] relative">
+          <div className='flex flex-col text-left items-start gap-[50px] w-full'>
+                <div className='w-full max-w-350px'>
+                    <div className="opacity-100 text-white">My Degree</div>
                 </div>
-                <h3 className="text-[30px] font-bold mb-3 lg:text[60px] group-hover:text-gray-200 transition">{item.title}</h3>
-                <p className="text-sm leading-relaxed">{item.desc}</p>
-        
+                
+                <div className="flex flex-col gap-y-[30px]">
+
+                  <div className='flex flex-col opacity-100 border-l-4 border-solid border-[#7000ff33] items-start w-full relative gap-x-[15px] text-left gap-y-[30px]'>
+                                {degrees.map((item, i) => (
+                        <div key={i} className="flex flex-col gap-y-0 pl-0">
+                      
+                            <div className="mb-2.5 text-[#ffffff] bg-[#fff6] rounded-[60px] py-2.5 px-[30px] leading-[1em] inline-block self-start">{item.year}</div>
+                        
+                            <h2 className="text-[#ffffff] tracking-[-1.6px] uppercase max-w-[1100px] text-[30px] my-2.5 font-medium leading-[1em]">{item.title}</h2>
+                            <p className="text-[#ffffff] max-w-[670px] my-2.5 font-normal leading-[1.5em]">{item.desc}</p>
+                
+                      </div>
+                      ))}
+                  </div>
+                  
               </div>
-            ))}
           </div>
+          
         </div>
     </div>
   )

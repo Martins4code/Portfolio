@@ -1,129 +1,167 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [demosOpen, setDemosOpen] = useState(false);
+  const [pagesOpen, setPagesOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // Lock background scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
+
+  const pagesList = Array.from({ length: 24 }, (_, i) => `Page Item ${i + 1}`);
+
   return (
-    <header className="w-full relative">
-      {/* --- DESKTOP NAVIGATION --- 
-         FIX: Added 'lg:flex' to make it visible on large screens.
-         Added 'items-center' and 'justify-between' for layout.
-         Added 'px-6 py-4' for spacing.
-      */}
+    <header className="w-full relative font-sans">
+      {/* --- DESKTOP NAVIGATION --- */}
       <div className="hidden lg:flex w-full items-center justify-between px-[15px] py-[15px] relative z-50 bg-[#e8e8e8]">
-        
-        {/* Logo Section */}
-        <div className="">
-          <a href="/" className="hover:text-violet-600 transition-colors mt-5">
+        <div>
+          <a href="/" className="hover:text-violet-600 transition-colors">
             <Image
               src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg"
               width={167}
               height={24}
               alt="Marcel Apitty"
-              className="text-xl 2xl:text-2xl"
             />
           </a>
         </div>
 
-        {/* Center Info Section (Job & Location) */}
         <div className="flex items-center gap-[5rem]">
-          <div className="">
-            <p className="text-small py-4">
-              Currently UI/UX Designer at{" "}
-              <span className="text-violet-600">Spike</span>
-            </p>
-          </div>
+          <p className="text-black whitespace-nowrap">
+            Currently UI/UX Designer at{" "}
+            <span className="text-violet-600 font-medium italic">Spike</span>
+          </p>
+          <p className="text-[20px] text-black whitespace-nowrap">Warsaw, Poland</p>
         </div>
-            <div>
-            <p className="text-[20px]">Warsaw, Poland</p>
-          </div>
 
-        {/* Navigation Links */}
         <nav className="flex items-center gap-6 2xl:gap-8 shrink-0">
-          <a href="#demos" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
-            Demos
-          </a>
-          <a href="#work" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
-            Works
-          </a>
-          <a href="/about" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
-            About
-          </a>
-          <a href="#contact" className="text-xl 2xl:text-2xl hover:text-violet-600 transition-colors">
-            Let Us Talk
-          </a>
+          <a href="#demos" className="text-xl text-black hover:text-violet-600 transition-colors">Demos</a>
+          <a href="#work" className="text-xl text-black hover:text-violet-600 transition-colors">Works</a>
+          <a href="/about" className="text-xl text-black hover:text-violet-600 transition-colors">About</a>
+          <a href="#contact" className="text-xl text-black hover:text-violet-600 transition-colors">Let Us Talk</a>
         </nav>
       </div>
 
-      {/* --- MOBILE NAVIGATION --- 
-          Changed 'xl:hidden' to 'lg:hidden' 
-      */}
-      <div className="flex lg:hidden justify-between items-center w-full pt-5 px-[15px]">
-
-        <div className="menu-name flex justify-between w-full items-center">
-          <div>
-             <a href="/">
-          <Image src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg" width={167} height={24} alt="Marcel Apitty" className="w-[167] h-[24]" />
+      {/* --- MOBILE NAVIGATION --- */}
+      <div className="flex lg:hidden justify-between items-center w-full pt-5 px-[15px] bg-[#e8e8e8]">
+        <a href="/">
+          <Image 
+            src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg" 
+            width={167} 
+            height={24} 
+            alt="Marcel Apitty" 
+          />
         </a>
-          </div>
-         
-        <div>
-          <button onClick={toggleMenu} className="relative z-[60] ">
-          <Image
-            src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/6516d855f0fd3371a7761050_menu-btn.svg"
+        
+        {/* HAMBURGER BUTTON - FIXED: Changed z-[80] to z-[50] so it sits behind the menu */}
+        <button onClick={toggleMenu} className="relative z-[50] p-2">
+          <Image 
+            src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/6516d855f0fd3371a7761050_menu-btn.svg" 
             alt="hamburger-menu"
-            height={16}
             width={27}
+            height={16}
           />
         </button>
-        </div>
-        
-
-        </div>
-        
 
         {/* --- MOBILE SIDE MENU PANEL --- */}
         <div 
-          className={`fixed top-0 left-0 h-screen w-[320px] bg-[#FFFFFF] z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col pt-6 px-[15px] pb-6 ${
+          className={`fixed top-0 left-0 h-screen w-full max-w-[370px] bg-white z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out overflow-y-auto ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
+          // FIXED: Removed inline style width to allow Tailwind responsive width above
         >
-          <div className="flex justify-between items-center mb-10">
-            <a href="/" onClick={toggleMenu}>
-              <a href="/" className="hover:text-violet-600 transition-colors">
-            <Image
-              src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg"
-              width={167}
-              height={24}
-              alt="Marcel Apitty"
-              className="text-xl 2xl:text-2xl"
-            />
-          </a>
-            </a>
-            <button onClick={toggleMenu}>
+          <div className="flex flex-col min-h-full pt-8 px-[30px] pb-12">
+            {/* Sidebar Logo and Close Button */}
+            <div className="flex justify-between items-center mb-12">
               <Image 
-                src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/6516d855f0fd3371a7761051_close-btn.svg" 
-                alt="close-menu"
-                width={17}
-                height={16}
+                src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/652e90c1db8e2313f6775069_Union.svg" 
+                width={167} 
+                height={24} 
+                alt="Marcel Apitty" 
               />
-            </button>
+              <button onClick={toggleMenu} className="p-2">
+                <Image 
+                  src="https://cdn.prod.website-files.com/6516d854f0fd3371a7760f25/6516d855f0fd3371a7761051_close-btn.svg" 
+                  alt="close-menu"
+                  width={17}
+                  height={16}
+                />
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col gap-8 text-[24px] text-black mb-16">
+              <div className="flex flex-col">
+                <button 
+                  onClick={() => setDemosOpen(!demosOpen)}
+                  className="flex justify-between items-center w-full hover:text-violet-600 transition-colors text-left font-medium"
+                >
+                  <span>Demos</span>
+                  <span className={`transition-transform duration-300 ${demosOpen ? 'rotate-180' : ''}`}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </span>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${demosOpen ? 'max-h-[300px] mt-4' : 'max-h-0'}`}>
+                  <div className="flex flex-col gap-4 ml-4 text-[19px] text-gray-500">
+                    <a href="#" className="hover:text-violet-600 transition-colors">Product Design</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Web Development</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Mobile Solutions</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Brand Identity</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">UI Kit</a>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#work" className="hover:text-violet-600 transition-colors font-medium">Work</a>
+              
+              <div className="flex flex-col">
+                <button 
+                  onClick={() => setPagesOpen(!pagesOpen)}
+                  className="flex justify-between items-center w-full hover:text-violet-600 transition-colors text-left font-medium"
+                >
+                  <span>Pages</span>
+                  <span className={`transition-transform duration-300 ${pagesOpen ? 'rotate-180' : ''}`}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </span>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${pagesOpen ? 'max-h-[1200px] mt-4' : 'max-h-0'}`}>
+                  <div className="flex flex-col gap-4 ml-4 text-[19px] text-gray-500 border-l border-gray-100 pl-4">
+                    {pagesList.map((page, index) => (
+                      <a key={index} href="#" className="hover:text-violet-600 transition-colors">{page}</a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <a href="#contact" className="hover:text-violet-600 transition-colors font-medium">Let Us Talk</a>
+            </nav>
+
+            {/* Footer Section */}
+            <div className="mt-auto space-y-4 pt-10 border-t border-gray-100">
+              <div className="text-[20px] font-medium text-black whitespace-nowrap">
+                Warsaw, Poland
+              </div>
+              <div className="text-[18px] text-black whitespace-nowrap">
+                Currently UI/UX Designer at{" "}
+                <a href="#" className="text-violet-600 font-bold italic hover:underline">Spike</a>
+              </div>
             </div>
           </div>
-          
+        </div>
 
-          
-
+        {/* Overlay */}
         {isOpen && (
-          <div 
-            className="fixed inset-0 bg-black/40 z-[65]"
-            onClick={toggleMenu}
-          />
+          <div className="fixed inset-0 bg-black/40 z-[65]" onClick={toggleMenu} />
         )}
       </div>
     </header>
