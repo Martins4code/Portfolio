@@ -106,18 +106,18 @@ const Header = () => {
                   onClick={() => setDemosOpen(!demosOpen)}
                   className="flex justify-between items-center w-full hover:text-violet-600 transition-colors text-left font-medium"
                 >
-                  <span>Demos</span>
+                  <span className="">Demos</span>
                   <span className={`transition-transform duration-300 ${demosOpen ? 'rotate-180' : ''}`}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                   </span>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${demosOpen ? 'max-h-[300px] mt-4' : 'max-h-0'}`}>
-                  <div className="flex flex-col gap-4 ml-4 text-[19px] text-gray-500">
-                    <a href="#" className="hover:text-violet-600 transition-colors">Product Design</a>
-                    <a href="#" className="hover:text-violet-600 transition-colors">Web Development</a>
-                    <a href="#" className="hover:text-violet-600 transition-colors">Mobile Solutions</a>
-                    <a href="#" className="hover:text-violet-600 transition-colors">Brand Identity</a>
-                    <a href="#" className="hover:text-violet-600 transition-colors">UI Kit</a>
+                  <div className="flex flex-col gap-4 ml-4 text-[18px] text-black text-small">
+                    <a href="#" className="hover:text-violet-600 transition-colors">Home 1</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Home 2</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Home 3</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Home 4</a>
+                    <a href="#" className="hover:text-violet-600 transition-colors">Home 5</a>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ const Header = () => {
                   </span>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${pagesOpen ? 'max-h-[1200px] mt-4' : 'max-h-0'}`}>
-                  <div className="flex flex-col gap-4 ml-4 text-[19px] text-gray-500 border-l border-gray-100 pl-4">
+                  <div className="flex flex-col gap-4 ml-4 text-[19px] text-black border-l  border-gray-100 pl-4">
                     {pagesList.map((page, index) => (
                       <a key={index} href="#" className="hover:text-violet-600 transition-colors">{page}</a>
                     ))}
@@ -153,7 +153,7 @@ const Header = () => {
               </div>
               <div className="text-[18px] text-black whitespace-nowrap">
                 Currently UI/UX Designer at{" "}
-                <a href="#" className="text-violet-600 font-bold italic hover:underline">Spike</a>
+                <a href="#" className="text-violet-600 text-small hover:underline">Spike</a>
               </div>
             </div>
           </div>
