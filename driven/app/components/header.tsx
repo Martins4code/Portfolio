@@ -48,7 +48,7 @@ const Header = () => {
           <a href="#demos" className="text-xl text-black hover:text-violet-600 transition-colors">Demos</a>
           <a href="#work" className="text-xl text-black hover:text-violet-600 transition-colors">Works</a>
           <a href="/about" className="text-xl text-black hover:text-violet-600 transition-colors">About</a>
-          <a href="#contact" className="text-xl text-black hover:text-violet-600 transition-colors">Let Us Talk</a>
+          <a href="contact" className="text-xl text-black hover:text-violet-600 transition-colors">Let Us Talk</a>
         </nav>
       </div>
 
