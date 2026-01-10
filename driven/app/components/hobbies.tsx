@@ -41,7 +41,7 @@ export default function HobbiesList() {
                     {hobbies.map((hobby, index) => (
                       <div key={index} className="flex flex-col gap-y-20 w-full mt-[50px]">
 
-                        <div className='flex flex-col gap-[50px] justify-between opacity-100 '>
+                        <div className='flex flex-col gap-[50px] justify-between opacity-100 lg:flex-row'>
 
                                               {/* Left Side: Text Content */}
                                     <div className="gap-y-[30px] flex flex-col">
@@ -63,7 +63,7 @@ export default function HobbiesList() {
                                     </div>
 
                                     {/* Right Side: Image */}
-                                    <div className="w-full rounded-[15px] flex-none h-[360px] overflow-hidden">
+                                    <div className="w-full rounded-[15px] flex-none h-[360px] overflow-hidden lg:w-[450px] lg:h-[360px]">
                                       <img 
                                         src={hobby.image} 
                                         alt={hobby.alt}

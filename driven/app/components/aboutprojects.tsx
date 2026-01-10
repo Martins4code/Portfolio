@@ -16,14 +16,14 @@ const ProjectCard = () => {
                   <div className='flex gap-[50px] flex-col'>
                         {/* No 1 */}
                         <div>
-                                  <div className='flex gap-[50px] flex-col justify-between'>
+                                  <div className='flex gap-[50px] flex-col justify-between  lg:flex-row'>
                                                                     {/* Left Content Section */}
                                                                     
-                                            <div className="flex opacity-100 gap-y-[50px] flex-col justify-between items-start w-full">
+                                            <div className="flex opacity-100 gap-y-[50px] flex-col justify-between items-start w-full lg:gap-y-[100px]">
                                           
                                            {/* writings x tag */}
-                                                <div className='flex flex-col gap-y-2.5'>
-                                                        <a href=""className="text-[30px] text-[#111] leading-[1.1em] items-center no-underline bg-[#0000] transition-colors duration-300 hover:text-[#7000ff]">
+                                                <div className='flex flex-col gap-y-2.5 lg:gap-y-[30px]'>
+                                                        <a href=""className="text-[30px] text-[#111] leading-[1.1em] items-center no-underline bg-[#0000] transition-colors duration-300 hover:text-[#7000ff] md:text-[42px] lg:text-[50px]">
                                                     Fashion Landing Page for Wally
                                                         </a>
                                                 
@@ -65,7 +65,7 @@ const ProjectCard = () => {
                                             </div>
 
                                             {/* Right Image Section */}
-                                            <div className="flex relative overflow-hidden opacity-100 h-[400px] items-center w-full rounded-[15px] flex-none justify-center transition-none">
+                                            <div className="flex relative overflow-hidden opacity-100 h-[400px] items-center w-full rounded-[15px] flex-none justify-center transition-none md:w-full md:h-[500px] lg:h-[600px] lg:w-[600px]">
                                             {/* Replace '/path-to-your-dashboard-image.png' with your actual image path.
                                                 Ensure the image is in your 'public' folder.
                                             */}
@@ -89,14 +89,14 @@ const ProjectCard = () => {
 
                                                 {/* No 2 */}
                         <div>
-                                  <div className='flex gap-[50px] flex-col justify-between'>
+                                  <div className='flex gap-[50px] flex-col justify-between lg:flex-row'>
                                                                     {/* Left Content Section */}
                                                                     
-                                            <div className="flex opacity-100 gap-y-[50px] flex-col justify-between items-start w-full">
+                                            <div className="flex opacity-100 gap-y-[50px] flex-col justify-between items-start w-full lg:gap-y-[100px]">
                                           
                                            {/* writings x tag */}
-                                                <div className='flex flex-col gap-y-2.5'>
-                                                        <a href=""className="text-[30px] text-[#111] leading-[1.1em] items-center no-underline bg-[#0000] transition-colors duration-300 hover:text-[#7000ff]">
+                                                <div className='flex flex-col gap-y-2.5 lg:gap-y-[30px]'>
+                                                        <a href=""className="text-[30px] text-[#111] leading-[1.1em] items-center no-underline bg-[#0000] transition-colors duration-300 hover:text-[#7000ff] md:text-[42px] lg:text-[50px]">
                                                     Fashion Landing Page for Wally
                                                         </a>
                                                 
@@ -138,7 +138,7 @@ const ProjectCard = () => {
                                             </div>
 
                                             {/* Right Image Section */}
-                                            <div className="flex relative overflow-hidden opacity-100 h-[400px] items-center w-full rounded-[15px] flex-none justify-center transition-none">
+                                            <div className="flex relative overflow-hidden opacity-100 h-[400px] items-center w-full rounded-[15px] flex-none justify-center transition-none md:w-full md:h-[500px] lg:h-[600px] lg:w-[600px]">
                                             {/* Replace '/path-to-your-dashboard-image.png' with your actual image path.
                                                 Ensure the image is in your 'public' folder.
                                             */}
@@ -161,14 +161,14 @@ const ProjectCard = () => {
 
                                                 {/* No 3 */}
                         <div>
-                                  <div className='flex gap-[50px] flex-col justify-between'>
+                                  <div className='flex gap-[50px] flex-col justify-between lg:flex-row'>
                                                                     {/* Left Content Section */}
                                                                     
-                                            <div className="flex opacity-100 gap-y-[50px] flex-col justify-between items-start w-full">
+                                            <div className="flex opacity-100 gap-y-[50px] flex-col justify-between items-start w-full lg:gap-y-[100px]">
                                           
                                            {/* writings x tag */}
-                                                <div className='flex flex-col gap-y-2.5'>
-                                                        <a href=""className="text-[30px] text-[#111] leading-[1.1em] items-center no-underline bg-[#0000] transition-colors duration-300 hover:text-[#7000ff]">
+                                                <div className='flex flex-col gap-y-2.5 lg:gap-y-[30px]'>
+                                                        <a href=""className="text-[30px] text-[#111] leading-[1.1em] items-center no-underline bg-[#0000] transition-colors duration-300 hover:text-[#7000ff] md:text-[42px] lg:text-[50px]">
                                                     Fashion Landing Page for Wally
                                                         </a>
                                                 
@@ -210,7 +210,7 @@ const ProjectCard = () => {
                                             </div>
 
                                             {/* Right Image Section */}
-                                            <div className="flex relative overflow-hidden opacity-100 h-[400px] items-center w-full rounded-[15px] flex-none justify-center transition-none">
+                                            <div className="flex relative overflow-hidden opacity-100 h-[400px] items-center w-full rounded-[15px] flex-none justify-center transition-none md:w-full md:h-[500px] lg:h-[600px] lg:w-[600px]">
                                             {/* Replace '/path-to-your-dashboard-image.png' with your actual image path.
                                                 Ensure the image is in your 'public' folder.
                                             */}

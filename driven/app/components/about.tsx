@@ -14,14 +14,14 @@ export default function AboutPage (){
       <div className="flex flex-col flex-1 items-center max-w-[1200px] mx-auto px-[15px] relative">
         
         {/* Hero Section */}
-        <div className="flex flex-col gap-y-5 justify-between items-center w-full">
+        <div className="flex flex-col gap-y-5 justify-between items-center w-full md:flex-row lg:flex-row">
 
-            <h1 className="opacity-100 text-center w-[50%] tracking-[-3px] uppercase leading-[1.2em] text-[40px] mx-2.5 font-medium">
+            <h1 className="opacity-100 text-center w-[50%] tracking-[-3px] uppercase leading-[1.2em] text-[40px] mx-2.5 font-medium md:text-left md:text-[50px] lg:text-[70px] lg:text-left lg:w-[35%] md:w-[37%]">
               About <span className="text-[#7000ff]">Marcel Apitty</span>
             </h1>
 
 
-                    <div className="w-full h-[200px] rounded-[15px] overflow-hidden">
+                    <div className="w-full h-[200px] rounded-[15px] overflow-hidden md:h-[250px] md:w-[65%] lg:h-[350px] lg:w-[60%]">
                       <Image
                         src="/images/profile-pic.webp"
                         alt="banner-image"

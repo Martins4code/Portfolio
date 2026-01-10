@@ -61,7 +61,7 @@ const Awards = () => {
                                 <motion.h2 
                                   animate={{ color: i === activeIndex ? "#7000ff" : "rgba(112, 0, 255, 0)" }}
                                   transition={{ duration: 1.5, ease: "easeInOut" }}
-                                  className='[-webkit-text-stroke-width:1px] [-webkit-text-stroke-color:#7000ff] text-[30px] my-2.5 font-medium tracking-[-1.6px] leading-[1em]'
+                                  className='[-webkit-text-stroke-width:1px] [-webkit-text-stroke-color:#7000ff] text-[30px] my-2.5 font-medium tracking-[-1.6px] leading-[1em] md:text-[42px] lg:text-[60px]'
                                 >
                                   {award.title}
                                 </motion.h2>

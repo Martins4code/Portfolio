@@ -21,13 +21,13 @@ const Degrees = () => {
                 
                 <div className="flex flex-col gap-y-[30px]">
 
-                  <div className='flex flex-col opacity-100 border-l-4 border-solid border-[#7000ff33] items-start w-full relative gap-x-[15px] text-left gap-y-[30px]'>
+                  <div className='flex flex-col opacity-100 border-l-4 border-solid border-[#7000ff33] items-start w-full relative gap-x-[15px] text-left gap-y-[30px] md:gap-y-[50px]'>
                                 {degrees.map((item, i) => (
                         <div key={i} className="flex flex-col gap-y-0 pl-0">
                       
                             <div className="mb-2.5 text-[#ffffff] bg-[#fff6] rounded-[60px] py-2.5 px-[30px] leading-[1em] inline-block self-start">{item.year}</div>
                         
-                            <h2 className="text-[#ffffff] tracking-[-1.6px] uppercase max-w-[1100px] text-[30px] my-2.5 font-medium leading-[1em]">{item.title}</h2>
+                            <h2 className="text-[#ffffff] tracking-[-1.6px] uppercase max-w-[1100px] text-[30px] my-2.5 font-medium leading-[1em] md:text-[42px] lg:text-[60px]">{item.title}</h2>
                             <p className="text-[#ffffff] max-w-[670px] my-2.5 font-normal leading-[1.5em]">{item.desc}</p>
                 
                       </div>
