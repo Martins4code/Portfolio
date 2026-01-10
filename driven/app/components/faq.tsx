@@ -14,36 +14,36 @@ const FaqAndCtaSection = () => {
   const faqData = [
     {
       question: "Who is Marcel Apitty?",
-      answer: "Marcel Apitty is a creative professional known for..."
+      answer: ""
     },
     {
       question: "Are there any upcoming events or exhibitions featuring work?",
-      answer: "Yes, currently we are scheduled to showcase at..."
+      answer: ""
     },
     {
       question: "How can I collaborate with a project?",
-      answer: "Collaborating is easy. Simply reach out via the contact form..."
+      answer: ""
     },
     {
       question: "How can I stay updated latest work and news?",
-      answer: "You can subscribe to our newsletter or follow us on social media..."
+      answer: ""
     },
     {
       question: "How can I get in touch with Marcel Apitty?",
-      answer: "Click the button below or email us directly at..."
+      answer: ""
     },
     // --- The 3 New Questions ---
     {
       question: "Do you accept international or remote projects?",
-      answer: "Absolutely. We work with clients globally using digital collaboration tools."
+      answer: ""
     },
     {
       question: "What does your typical creative process look like?",
-      answer: "We follow a four-step process: Discovery, Strategy, Design, and Delivery."
+      answer: ""
     },
     {
       question: "Do you offer post-project support or maintenance?",
-      answer: "Yes, we offer ongoing support packages to ensure your project continues to run smoothly."
+      answer: ""
     }
   ];
 
