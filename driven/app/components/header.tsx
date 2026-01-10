@@ -22,7 +22,7 @@ const Header = () => {
   const pagesList = Array.from({ length: 24 }, (_, i) => `Page Item ${i + 1}`);
 
   return (
-    <header className="w-full relative font-sans">
+    <header className="w-full relative font-sans pb-[15px]">
       {/* --- DESKTOP NAVIGATION --- */}
       <div className="hidden lg:flex w-full items-center justify-between px-[15px] py-[15px] relative z-50 bg-[#e8e8e8]">
         <div>

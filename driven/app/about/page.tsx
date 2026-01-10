@@ -1,12 +1,14 @@
 import React from 'react'
 import About from '../components/about'
 import Header from '../components/header'
-import Footer from '../components/footer'
 import AboutAwards from '../components/aboutawards'
 import Degrees from '../components/Degrees'
 import Hobbies from '../components/hobbies'
-import Services from '../components/services'
 import Aboutprojects from '../components/aboutprojects'
+import Aboutservices from '../components/aboutservices'
+import Aboutfooter from '../components/aboutfooter'
+
+
 
 const page = () => {
   return (
@@ -17,9 +19,9 @@ const page = () => {
         <AboutAwards />
         <Hobbies />
         <Aboutprojects />
-          <Services />
+        <Aboutservices />
+        <Aboutfooter />
         
-        <Footer />
 
     </div>
   )
