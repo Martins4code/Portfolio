@@ -66,7 +66,7 @@ const ContactCard = () => {
                 <div className="px-0 relative">FB</div>
               </a>
 
-              {/* Circle 3: TW (Twitter/X) */}
+              {/* Circle 3: TW (Twitter/X). */} 
               <a
                 href="#"
                 className="border-2 border-solid text-[#ffffff] border-[#ffffff] uppercase rounded-[50%] justify-center w-[50px] h-[50px] flex max-x-full items-center text-[20px] leading-[1.2em] no-underline bg-[#0000] transition-colors duration-300 ease-in-out hover:text-[#7000ff] group"
