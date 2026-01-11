@@ -1,13 +1,14 @@
 "use client"
 import React, { useState } from 'react';
-import { ChevronDown, MessageSquare } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const FaqAndCtaSection = () => {
-  // State to track which FAQ item is currently open
-  const [openIndex, setOpenIndex] = useState(null);
+  // FIXED: Explicitly tell TypeScript this state can hold a number OR null
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleAccordion = (index) => {
+  // FIXED: Added ': number' type definition to the index parameter
+  const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -146,10 +147,6 @@ const FaqAndCtaSection = () => {
             })}
           </div>
         </div>
-        
-
-       
-
       </div>
     </div>
   );
