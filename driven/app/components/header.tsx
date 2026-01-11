@@ -19,7 +19,7 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  const pagesList = Array.from({ length: 24 }, (_, i) => `Page Item ${i + 1}`);
+  const pagesList = ["Home", "About"];
 
   return (
     <header className="w-full relative font-sans pb-[15px]">
@@ -46,7 +46,7 @@ const Header = () => {
 
         <nav className="flex items-center gap-6 2xl:gap-8 shrink-0">
           <a href="#demos" className="text-xl text-black hover:text-violet-600 transition-colors">Demos</a>
-          <a href="#work" className="text-xl text-black hover:text-violet-600 transition-colors">Works</a>
+          <a href="work" className="text-xl text-black hover:text-violet-600 transition-colors">Works</a>
           <a href="/about" className="text-xl text-black hover:text-violet-600 transition-colors">About</a>
           <a href="contact" className="text-xl text-black hover:text-violet-600 transition-colors">Let Us Talk</a>
         </nav>

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { ChevronDown, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const FaqAndCtaSection = () => {
   // State to track which FAQ item is currently open
@@ -67,9 +68,13 @@ const FaqAndCtaSection = () => {
           {/* First Column */}
           <div className="flex flex-col gap-5 w-full md:w-[calc(50%-10px)]">
             {faqData.slice(0, 4).map((item, index) => (
-                <div 
+                <motion.div 
                 key={index} 
                 className="bg-white rounded-[15px] w-full px-[30px] py-5 static"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
                 >
                 <button
                     onClick={() => toggleAccordion(index)}
@@ -95,7 +100,7 @@ const FaqAndCtaSection = () => {
                     {item.answer}
                     </p>
                 </div>
-                </div>
+                </motion.div>
             ))}
           </div>
 
@@ -104,9 +109,13 @@ const FaqAndCtaSection = () => {
             {faqData.slice(4).map((item, index) => {
               const actualIndex = index + 4;
               return (
-                <div 
+                <motion.div 
                 key={actualIndex} 
                 className="bg-white rounded-[15px] w-full px-[30px] py-5 static"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
                 >
                 <button
                     onClick={() => toggleAccordion(actualIndex)}
@@ -132,7 +141,7 @@ const FaqAndCtaSection = () => {
                     {item.answer}
                     </p>
                 </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
