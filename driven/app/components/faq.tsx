@@ -34,7 +34,7 @@ const FaqAndCtaSection = () => {
       question: "How can I get in touch with Marcel Apitty?",
       answer: ""
     },
-    // --- The 3 New Questions ---
+  
     {
       question: "Do you accept international or remote projects?",
       answer: ""

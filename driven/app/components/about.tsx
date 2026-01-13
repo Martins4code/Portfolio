@@ -16,7 +16,7 @@ export default function AboutPage (){
         {/* Hero Section */}
         <div className="flex flex-col gap-y-5 justify-between items-center w-full md:flex-row lg:flex-row">
 
-            <h1 className="opacity-100 text-center w-[50%] tracking-[-3px] uppercase leading-[1.2em] text-[40px] mx-2.5 font-medium md:text-left md:text-[50px] lg:text-[70px] lg:text-left lg:w-[35%] md:w-[37%]">
+            <h1 className="opacity-100 text-center w-[50%] tracking-[-3px] uppercase leading-[1.2em] text-[40px] mx-2.5 font-medium md:text-left md:text-[50px] lg:text-[70px] lg:text-left lg:w-[35%] md:w-[37%] lg:leading-[1em] lg:tracking-[-3px] lg:mx-0">
               About <span className="text-[#7000ff]">Marcel Apitty</span>
             </h1>
 

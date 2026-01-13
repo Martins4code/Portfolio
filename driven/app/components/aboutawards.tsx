@@ -29,7 +29,7 @@ const Awards = () => {
         */}
         <div className='flex flex-col items-center max-w-[1200px] mx-auto px-[15px] relative'>
 
-            <div className='flex flex-col gap-y-[60px] gap-x-0 text-center items-center w-full'>
+            <div className='flex flex-col gap-y-[60px] gap-x-0 text-center items-center w-full lg:gap-y-[100px]'>
 
                       {/* Title Section */}
                     <motion.div 
@@ -45,7 +45,7 @@ const Awards = () => {
     
                     </motion.div>
                     
-                    <div className='flex flex-col gap-y-[30px]'>
+                    <div className='flex flex-col gap-y-[30px] lg:gap-y-[50px]'>
                         {/* Awards List */}
                     
                         {awards.map((award, i) => (

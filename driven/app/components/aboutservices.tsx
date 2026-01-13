@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ServiceCard = ({ 
   children, 
   baseColor = "bg-[#7000ff]", 
-  overlayColor = "bg-black", 
+  overlayColor = "bg-[#222]", 
   index = 0
 }: { 
   children: React.ReactNode, 

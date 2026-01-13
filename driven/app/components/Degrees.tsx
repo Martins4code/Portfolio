@@ -11,15 +11,15 @@ const degrees = [
 
 const Degrees = () => {
   return (
-    <div className='py-[60px] z-5 bg-[#e8e8e8] relative block'>
+    <div className='py-[60px] lg:py-[130px] z-5 bg-[#e8e8e8] relative block'>
            {/* Degrees Section */}
-        <div className="flex flex-col py-[30px] bg-[#7000ff] rounded-[15px] mx-[15px] items-center max-w-[1200px] px-[15px] relative">
+        <div className="flex flex-col py-[30px] bg-[#7000ff] rounded-[15px] mx-[15px] items-center max-w-[1200px] px-[15px] relative lg:mx-auto lg:py-[50px]">
           <div className='flex flex-col text-left items-start gap-[50px] w-full'>
                 <div className='w-full max-w-350px'>
-                    <div className="opacity-100 text-white">My Degree</div>
+                    <div className="opacity-100 text-white">MY DEGREE</div>
                 </div>
                 
-                <div className="flex flex-col gap-y-[30px]">
+                <div className="flex flex-col gap-y-[30px] lg:gap-y-[50px]">
 
                   <div className='flex flex-col opacity-100 border-l-4 border-solid border-[#7000ff33] items-start w-full relative gap-x-[15px] text-left gap-y-[30px] md:gap-y-[50px]'>
                                 {degrees.map((item, i) => (

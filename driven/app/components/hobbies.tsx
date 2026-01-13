@@ -25,13 +25,13 @@ const hobbies = [
 
 export default function HobbiesList() {
   return (
-    <div className="pb-0 pt-[60px] z-5 bg-[#e8e8e8] relative block">
-      <div className="flex flex-col items-center max-w-[1200px] px-[15px] relative opacity-100 bg-[#111] rounded-[15px] mx-[15px] py-[50px]">
+    <div className="pb-0 pt-[60px] lg:pt-[130px] z-5 bg-[#e8e8e8] relative block">
+      <div className="flex flex-col items-center max-w-[1200px] px-[15px] relative opacity-100 bg-[#111] rounded-[15px] mx-[15px] py-[50px] lg:mx-auto">
         <div className='w-full'>
                     {/* Section Label */}
                     <div className='w-full max-w-[350px]'>
                           <div className="opacity-100 text-white">
-                            My Hobbies
+                            MY HOBBIES
                           </div>
                     </div>
                   

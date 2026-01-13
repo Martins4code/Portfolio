@@ -8,11 +8,11 @@ const ContactCard = () => {
       <div className="flex flex-col z-[2] gap-y-2.5 w-full max-w-[1200px] mx-auto px-[15px] relative">
         
         {/* 3rd Card Container */}
-        <div className="flex flex-col gap-y-[30px] gap-x-[50px] items-center pt-[30px] px-[15px] bg-[#ffffff] rounded-[15px] justify-between w-full pl-[15px]">
-          <div className="flex flex-col justify-center text-center items-center gap-y-5 ">
+        <div className="flex flex-col gap-y-[30px] gap-x-[50px] items-center pt-[30px] px-[15px] bg-[#ffffff] rounded-[15px] justify-between w-full pl-[15px] lg:flex-row lg:py-2.5 lg:pr-2.5 lg:pl-[15px]">
+          <div className="flex flex-col justify-center text-center items-center gap-y-5 lg:text-left lg:items-start">
             
             {/* Top Buttons Section - FIXED */}
-            <div className="flex flex-row gap-2.5 justify-center flex-wrap">
+            <div className="flex flex-row gap-2.5 justify-center flex-wrap lg:justify-start">
               <div className="text-[18px] uppercase bg-[#7000ff33] rounded-[60px] flex-none py-2 px-[30px]">
                 Contact Us
               </div>
@@ -34,7 +34,7 @@ const ContactCard = () => {
           </div>
 
           {/* Image Section with Overlay */}
-          <div className="max-w-none rounded-[15px] flex-none w-full h-[370px] relative overflow-hidden">
+          <div className="max-w-none rounded-[15px] flex-none w-full h-[370px] relative overflow-hidden lg:max-w-[350px]">
             <Image
               src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Workspace"
